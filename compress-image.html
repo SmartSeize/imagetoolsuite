@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Compress Image Online Free – Reduce File Size in KB Instantly</title>
+
+<meta name="description" content="Compress images online for free – reduce file size from MB to KB while keeping original dimensions unchanged. No upload, minimal quality loss. Works instantly in your browser.">
+
+<link rel="canonical" href="https://imagetoolsuite.com/compress-image">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ImageToolSuite">
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="Compress Image Online Free – Reduce File Size in KB Instantly">
+<meta property="og:description" content="Reduce image file size from MB to KB without changing dimensions – free, private, no upload required. Compress JPG, PNG and WebP instantly.">
+<meta property="og:url"         content="https://imagetoolsuite.com/compress-image">
+<meta property="og:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Compress Image Online Free – Reduce File Size in KB Instantly">
+<meta name="twitter:description" content="Compress image online free – reduce file size from MB to KB, keep dimensions, no upload needed.">
+<meta name="twitter:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<!-- SoftwareApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Compress Image Online Free",
+  "url": "https://imagetoolsuite.com/compress-image",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free browser-based tool to compress images online. Reduce file size from MB to KB without changing image dimensions. No upload required.",
+  "featureList": [
+    "Reduce image file size from MB to KB",
+    "Adjust compression quality with slider",
+    "Keep original pixel dimensions",
+    "Lossy and lossless compression",
+    "Live file size preview before download",
+    "No upload – runs in browser"
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I compress an image online for free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Upload your image to the compress tool above, adjust the quality slider to set your target file size, and click download. The tool runs entirely in your browser – no upload to any server required." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does compressing an image reduce its quality?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lossy compression (used for JPG and WebP) does reduce quality slightly, but at 70–85% quality the difference is invisible to the human eye. Lossless compression (PNG) removes no visual data at all. For web use, 75–80% quality JPG compression is the industry standard." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between lossy and lossless compression?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lossy compression permanently removes some image data to achieve smaller file sizes – the result looks nearly identical but the original data cannot be recovered. Lossless compression reorganizes image data more efficiently without discarding anything – the file is smaller but fully reversible." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good image file size for a website?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For most web images, under 200 KB is the target. Hero images can go up to 400 KB. Thumbnails should stay below 50–80 KB. Google PageSpeed recommends serving images under 100 KB wherever possible to keep page load times fast." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I compress an image without losing its dimensions?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Compression reduces file size by encoding pixel data more efficiently – the pixel dimensions stay identical. A 4000 × 3000 px photo can be compressed from 5 MB to under 400 KB while remaining exactly 4000 × 3000 px." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I compress an image too much?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Heavy lossy compression causes visible artifacts – blocky patches, color banding and blurry edges. This is called compression artifacting. It typically becomes visible below 50% quality for JPG. The tool above shows a live preview so you can find the right balance before downloading." }
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+<style>
+/* ── Page-specific styles ─────────────────────────── */
+
+.page-nav {
+font-size: 13px;
+color: #888;
+margin: 16px 0 0 0;
+}
+
+.page-nav a {
+color: #4caf50;
+text-decoration: none;
+}
+
+.page-nav a:hover { text-decoration: underline; }
+
+.tool-embed {
+background: white;
+border: 1px solid #ddd;
+border-radius: 12px;
+padding: 28px;
+margin: 24px 0;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tool-embed h2 {
+margin-top: 0;
+margin-bottom: 20px;
+font-size: 1.2rem;
+}
+
+.upload-zone {
+border: 2px dashed #b8bcc2;
+background: #fafbfc;
+border-radius: 10px;
+padding: 36px;
+text-align: center;
+cursor: pointer;
+transition: all 0.2s;
+margin-bottom: 20px;
+}
+
+.upload-zone:hover {
+border-color: #4caf50;
+background: #f0f8f2;
+}
+
+.upload-zone p { margin: 6px 0; font-size: 14px; color: #666; }
+.upload-zone strong { font-size: 15px; color: #333; }
+
+.compress-cta {
+background: #4caf50;
+color: white;
+border: none;
+padding: 13px 28px;
+border-radius: 8px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s;
+}
+
+.compress-cta:hover { background: #43a047; }
+
+/* QUALITY SLIDER */
+.quality-wrap {
+margin-bottom: 20px;
+}
+
+.quality-wrap label {
+display: block;
+font-size: 13px;
+font-weight: 600;
+margin-bottom: 8px;
+color: #444;
+}
+
+.quality-row {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.quality-row input[type="range"] {
+flex: 1;
+}
+
+.quality-badge {
+background: #f0faf1;
+border: 1px solid #c3e6cb;
+color: #1e7e34;
+border-radius: 999px;
+padding: 3px 12px;
+font-size: 13px;
+font-weight: 600;
+min-width: 44px;
+text-align: center;
+}
+
+/* COMPARISON TABLE */
+.compare-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+.compare-grid { grid-template-columns: 1fr; }
+}
+
+.compare-card {
+background: white;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 20px;
+}
+
+.compare-card .compare-title {
+font-size: 14px;
+font-weight: 700;
+margin-bottom: 12px;
+padding-bottom: 8px;
+border-bottom: 2px solid #e5e7eb;
+}
+
+.compare-card.lossy .compare-title { border-color: #f59e0b; color: #b45309; }
+.compare-card.lossless .compare-title { border-color: #4caf50; color: #1e7e34; }
+
+.compare-card ul {
+list-style: none;
+padding: 0;
+margin: 0;
+font-size: 13px;
+color: #3a3835;
+line-height: 1.8;
+}
+
+.compare-card ul li::before {
+content: '→ ';
+color: #999;
+}
+
+/* EXAMPLE BOX */
+.example-box {
+background: #f8f9fb;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 20px 24px;
+margin: 20px 0;
+}
+
+.example-arrow {
+display: flex;
+align-items: center;
+gap: 16px;
+flex-wrap: wrap;
+}
+
+.example-before,
+.example-after {
+background: white;
+border: 1px solid #ddd;
+border-radius: 8px;
+padding: 12px 18px;
+text-align: center;
+min-width: 140px;
+}
+
+.example-before .label,
+.example-after .label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+color: #999;
+margin-bottom: 4px;
+}
+
+.example-before .dims { font-size: 1.2rem; font-weight: 700; color: #1a1917; }
+.example-after  .dims { font-size: 1.2rem; font-weight: 700; color: #2d6a4f; }
+.arrow-icon { font-size: 1.5rem; color: #4caf50; }
+
+.example-note {
+font-size: 13px;
+color: #666;
+margin-top: 12px;
+line-height: 1.6;
+}
+
+/* COMPRESS TABLE */
+.compress-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 16px;
+font-size: 14px;
+background: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.compress-table th {
+background: #1a1917;
+color: white;
+padding: 11px 16px;
+text-align: left;
+font-size: 13px;
+font-weight: 500;
+}
+
+.compress-table td {
+padding: 10px 16px;
+border-bottom: 1px solid #eee;
+color: #3a3835;
+}
+
+.compress-table tr:last-child td { border-bottom: none; }
+.compress-table tr:hover td { background: #f8f9fb; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://imagetoolsuite.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Compress Image Online Free", "item": "https://imagetoolsuite.com/compress-image"}
+  ]
+}
+</script>
+</head>
+
+<body>
+<nav class="global-nav" aria-label="Main navigation">
+  <a href="/" class="global-nav-logo">ImageToolSuite</a>
+  <div class="global-nav-links">
+    <a href="/">Home</a>
+    <a href="/resize-image">Resize</a>
+    <a href="/compress-image">Compress</a>
+    <a href="/optimize-image">Optimize</a>
+    <a href="/dpi-checker">DPI</a>
+    <a href="/social-media-image-size">Social</a>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<nav class="page-nav">
+  <a href="/">← Image Tool Suite</a> / Compress Image
+</nav>
+
+<h1>Compress Image Online Free – Reduce File Size in KB Instantly</h1>
+
+<p class="subtitle">
+  Reduce image file size from <strong>5 MB to under 300 KB</strong> without changing pixel dimensions. Whether you need to get under an email attachment limit, speed up your website, or meet an upload size requirement – this free <strong>compress image online</strong> tool does it in seconds.
+</p>
+
+<p>No upload, no account, 100% private. This tool works directly in your browser using HTML5 canvas technology — your image is processed locally and never sent to any server.</p>
+
+<ul class="feature-list">
+  <li>Reduce file size from MB to KB</li>
+  <li>Keep original pixel dimensions</li>
+  <li>Adjustable quality slider (10–100%)</li>
+  <li>Live file size preview before download</li>
+  <li>Compress JPG, PNG and WebP</li>
+  <li>Runs locally – no upload required</li>
+</ul>
+
+<p class="cta-hint">Drop your image below to compress it instantly.</p>
+
+<!-- TOOL EMBED -->
+<div class="tool-embed" id="tool">
+
+  <h2>Compress Your Image</h2>
+
+  <div class="upload-zone" id="compressUploadZone">
+    <strong>Drop image here to start</strong>
+    <p>or</p>
+    <button class="compress-cta" onclick="document.getElementById('compressFileInput').click()">Select Image</button>
+    <input type="file" id="compressFileInput" accept="image/*" hidden>
+    <p style="margin-top:12px; font-size:12px; color:#aaa;">Works best with JPG, PNG and WebP images – processed locally in your browser.</p>
+  </div>
+
+  <div id="compressToolControls" style="display:none;">
+
+    <div id="compressPreviewWrap" style="margin-bottom:20px;">
+      <img id="compressPreviewImg" src="" alt="Image preview before compression – adjust quality to reduce file size" style="max-width:100%; max-height:280px; border-radius:8px; object-fit:contain;">
+      <div class="image-info" id="compressImageInfo" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="quality-wrap">
+      <label>Compression Quality</label>
+      <div class="quality-row">
+        <input type="range" id="compressQuality" min="10" max="100" value="80" step="5">
+        <span class="quality-badge" id="compressQualityVal">80%</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:#aaa; margin-top:4px;">
+        <span>Smallest file</span>
+        <span>Best quality</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Output Format</div>
+      <div style="display:flex; gap:8px;">
+        <button class="convert-btn active" data-format="image/jpeg">JPG</button>
+        <button class="convert-btn" data-format="image/png">PNG</button>
+        <button class="convert-btn" data-format="image/webp">WEBP</button>
+      </div>
+    </div>
+
+    <button class="compress-cta" id="compressDownloadBtn">⬇ Download Compressed Image</button>
+    <div id="compressResult" style="margin-top:12px; font-size:14px;"></div>
+
+  </div>
+
+</div><!-- /.tool-embed -->
+
+<p style="font-size:13px; color:#666; margin-top:-8px; margin-bottom:24px;">
+  Tip: After compressing, you can also <a href="/resize-image" style="color:#4caf50;">resize the image dimensions</a> or check quality with the <a href="/" style="color:#4caf50;">free image checker tool</a>. If you're optimizing images for websites, consider using the <a href="/optimize-image" style="color:#4caf50;">image optimization tool</a> to improve loading speed and performance.
+</p>
+
+<canvas id="compressCanvas" style="display:none;"></canvas>
+
+</div><!-- /.container -->
+
+<!-- SEO CONTENT -->
+<div class="seo-content">
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>How Image Compression Works</h2>
+    <p>When you <strong>compress an image online</strong>, you are reducing the number of bytes needed to store the pixel data — without changing the pixel count. A 4000 × 3000 px photo remains 4000 × 3000 px after compression; only the file size shrinks.</p>
+    <p>Compression algorithms analyze the image and find redundant or near-identical data patterns. In a blue sky, for example, hundreds of nearly identical blue pixels can be encoded as a single instruction rather than stored individually. The more repetitive the content, the more a file can be compressed.</p>
+    <p>This tool works directly in your browser using HTML5 canvas technology. The quality slider controls how aggressively the algorithm removes data. At 80% quality, most images lose no visually detectable detail but shrink to 20–30% of their original size.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Lossy vs. Lossless Compression Explained</h2>
+    <p>Not all compression is equal. The two fundamental approaches work very differently and suit different use cases.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card lossy">
+        <div class="compare-title">Lossy Compression</div>
+        <ul>
+          <li>Permanently removes some image data</li>
+          <li>Achieves the smallest file sizes</li>
+          <li>Used by JPG and WebP formats</li>
+          <li>Invisible at 75–85% quality</li>
+          <li>Ideal for photos and web images</li>
+          <li>Cannot be reversed</li>
+        </ul>
+      </div>
+      <div class="compare-card lossless">
+        <div class="compare-title">Lossless Compression</div>
+        <ul>
+          <li>Removes no visual data whatsoever</li>
+          <li>File is smaller but fully reversible</li>
+          <li>Used by PNG and GIF formats</li>
+          <li>Smaller savings than lossy</li>
+          <li>Ideal for logos, icons, screenshots</li>
+          <li>Original quality fully preserved</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;">For photographs, <strong>lossy JPG or WebP compression at 75–85%</strong> is the standard choice. For graphics with sharp edges, text or transparency, use <strong>lossless PNG</strong>. The tool above supports both — simply select your output format.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Example: Compress a 5 MB Photo to Under 300 KB</h2>
+    <p>A typical smartphone photo or DSLR RAW export saved as JPG often lands between 3–8 MB. For email, web upload or social media, that is far too large. Here is what compression achieves in practice:</p>
+
+    <div class="example-box">
+      <div class="example-arrow">
+        <div class="example-before">
+          <div class="label">Original</div>
+          <div class="dims">5.2 MB</div>
+          <div style="font-size:12px; color:#888; margin-top:4px;">4000 × 3000 px · JPG</div>
+        </div>
+        <div class="arrow-icon">→</div>
+        <div class="example-after">
+          <div class="label">Compressed</div>
+          <div class="dims">240 KB</div>
+          <div style="font-size:12px; color:#2d6a4f; margin-top:4px;">4000 × 3000 px · JPG 80%</div>
+        </div>
+      </div>
+      <p class="example-note">
+        The pixel dimensions stay exactly the same — 4000 × 3000 px. Only the file size drops by over 95%.
+        At 80% quality the visual difference is not detectable at normal viewing distance.
+        Use the <a href="#tool">free compress image tool</a> above to find the right balance for your image.
+      </p>
+    </div>
+
+    <p>Another common scenario: a PNG screenshot of 1.8 MB compressed to WebP at 85% quality comes out at around 120 KB — small enough for any email attachment limit and fast enough to load in under 50ms on a mobile connection.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>When to Use and When Not to Compress</h2>
+    <p>Compression is not always the right move. Here are the cases where it makes sense — and where you should leave the file untouched:</p>
+
+    <table class="compress-table">
+      <thead><tr><th>Situation</th><th>Compress?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Uploading images to a website</td><td><span class="badge-good">Yes</span></td><td>Large files slow page load. Target under 200 KB for most web images.</td></tr>
+        <tr><td>Sending photos by email</td><td><span class="badge-good">Yes</span></td><td>Most email servers reject attachments over 10–25 MB. Compress to stay safe.</td></tr>
+        <tr><td>Posting on social media</td><td><span class="badge-good">Yes</span></td><td>Platforms re-compress anyway. Pre-compressing gives you control over quality.</td></tr>
+        <tr><td>Archiving original photos</td><td><span class="badge-bad">No</span></td><td>Always keep originals uncompressed. Lossy compression is irreversible.</td></tr>
+        <tr><td>Preparing files for professional print</td><td><span class="badge-bad">No</span></td><td>Print requires maximum quality. Compression artifacts appear clearly in print.</td></tr>
+        <tr><td>Logos and text graphics</td><td><span class="badge-medium">Caution</span></td><td>Use lossless PNG compression only. Lossy JPG introduces visible edge artifacts on sharp lines.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="seo-faq">
+
+      <details>
+        <summary>How do I compress an image online for free?</summary>
+        <div class="seo-faq-body">Drop your image into the <a href="#tool">compress tool</a> above, set your target quality with the slider, and click download. Everything runs in your browser — no upload to any server, no account needed, completely private.</div>
+      </details>
+
+      <details>
+        <summary>Does compressing an image reduce its quality?</summary>
+        <div class="seo-faq-body">Lossy compression (JPG, WebP) does reduce quality slightly, but at 75–85% the difference is invisible to the human eye. Lossless compression (PNG) removes no visual data at all. For web use, 80% quality JPG is the industry standard — significant file size savings with no visible degradation.</div>
+      </details>
+
+      <details>
+        <summary>What is the difference between lossy and lossless compression?</summary>
+        <div class="seo-faq-body">Lossy compression permanently removes some pixel data to achieve very small file sizes — the result looks identical but the original data is gone. Lossless compression reorganizes data more efficiently without discarding anything — the file is smaller but fully reversible. Use lossy for photos, lossless for logos and screenshots.</div>
+      </details>
+
+      <details>
+        <summary>What is a good image file size for a website?</summary>
+        <div class="seo-faq-body">For most web images, under 200 KB is the target. Hero or banner images can go up to 400 KB. Thumbnails should stay below 50–80 KB. Google PageSpeed recommends keeping images under 100 KB wherever possible to maintain fast load times and good Core Web Vitals scores.</div>
+      </details>
+
+      <details>
+        <summary>Can I compress an image without losing its dimensions?</summary>
+        <div class="seo-faq-body">Yes — compression only affects file size, not pixel dimensions. A 4000 × 3000 px photo compressed from 5 MB to 240 KB remains exactly 4000 × 3000 px. If you also need to change the dimensions, use our <a href="/resize-image" style="color:#4caf50;">free image resize tool</a> separately.</div>
+      </details>
+
+      <details>
+        <summary>What happens if I compress an image too much?</summary>
+        <div class="seo-faq-body">Heavy lossy compression causes visible artifacts — blocky patches, color banding and blurry edges. This is called compression artifacting and typically becomes noticeable below 50% quality for JPG. The tool above lets you preview the result before downloading so you can find the right balance between file size and visual quality.</div>
+      </details>
+
+    </div>
+  </section>
+
+</div><!-- /.seo-content -->
+
+<footer style="text-align:center; font-size:13px; color:#999; padding:28px 0; border-top:1px solid #e5e7eb; margin-top:20px;">
+  <p>
+    <a href="/" style="color:#4caf50; text-decoration:none;">Image Tools</a> ·
+    <a href="/resize-image" style="color:#4caf50; text-decoration:none;">Resize Image</a> ·
+    <a href="/compress-image" style="color:#4caf50; text-decoration:none;">Compress Image</a> ·
+    <a href="/optimize-image" style="color:#4caf50; text-decoration:none;">Optimize Image</a> ·
+    <a href="/dpi-checker" style="color:#4caf50; text-decoration:none;">DPI Checker</a> ·
+    <a href="/social-media-image-size" style="color:#4caf50; text-decoration:none;">Social Media Sizes</a>
+  </p>
+  <p style="margin-top:8px;">
+    © 2026 ImageToolSuite.com ·
+    <a href="/legal-notice" style="color:#4caf50; text-decoration:none;">Legal Notice</a> ·
+    <a href="/privacy-policy" style="color:#4caf50; text-decoration:none;">Privacy Policy</a> ·
+    <span style="color:#aaa;">Privacy-friendly · No tracking cookies</span>
+  </p>
+</footer>
+
+<script defer>
+// ── Standalone compress tool ──────────────────────────
+
+let compressImage  = null;
+let compressFormat = 'image/jpeg';
+
+const uploadZone    = document.getElementById('compressUploadZone');
+const fileInput     = document.getElementById('compressFileInput');
+const controls      = document.getElementById('compressToolControls');
+const previewImg    = document.getElementById('compressPreviewImg');
+const imageInfo     = document.getElementById('compressImageInfo');
+const qualitySlider = document.getElementById('compressQuality');
+const qualityVal    = document.getElementById('compressQualityVal');
+const downloadBtn   = document.getElementById('compressDownloadBtn');
+const canvas        = document.getElementById('compressCanvas');
+const resultBox     = document.getElementById('compressResult');
+
+// Upload
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) loadImage(e.target.files[0]);
+});
+
+// Drag & drop
+uploadZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#4caf50';
+  uploadZone.style.background  = '#f0f8f2';
+});
+
+uploadZone.addEventListener('dragleave', () => {
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+});
+
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+  if (e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+});
+
+function loadImage(file) {
+  if (!file.type.startsWith('image/')) return alert('Please select a valid image file.');
+  const originalKB = (file.size / 1024).toFixed(0);
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    compressImage = img;
+    previewImg.src = url;
+    imageInfo.innerHTML = `<b>Original size:</b> ${originalKB} KB &nbsp;·&nbsp; <b>Dimensions:</b> ${img.width} × ${img.height} px`;
+    uploadZone.style.display = 'none';
+    controls.style.display   = 'block';
+    updateEstimate();
+  };
+  img.src = url;
+}
+
+// Quality slider
+qualitySlider.addEventListener('input', () => {
+  qualityVal.textContent = qualitySlider.value + '%';
+  updateEstimate();
+});
+
+function updateEstimate() {
+  if (!compressImage) return;
+  canvas.width  = compressImage.width;
+  canvas.height = compressImage.height;
+  canvas.getContext('2d').drawImage(compressImage, 0, 0);
+  canvas.toBlob(blob => {
+    const kb = (blob.size / 1024).toFixed(0);
+    resultBox.innerHTML = `Estimated output: <strong>${kb} KB</strong>`;
+    resultBox.style.color = '#555';
+  }, compressFormat, qualitySlider.value / 100);
+}
+
+// Format buttons
+document.querySelectorAll('.convert-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.convert-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    compressFormat = btn.dataset.format;
+    updateEstimate();
+  });
+});
+
+// Download
+downloadBtn.addEventListener('click', () => {
+  if (!compressImage) return;
+  canvas.width  = compressImage.width;
+  canvas.height = compressImage.height;
+  canvas.getContext('2d').drawImage(compressImage, 0, 0);
+  const quality = qualitySlider.value / 100;
+  canvas.toBlob(blob => {
+    const ext  = compressFormat.split('/')[1];
+    const url  = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href     = url;
+    link.download = `compressed-${qualitySlider.value}pct.${ext}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const kb = (blob.size / 1024).toFixed(0);
+    resultBox.innerHTML = `✓ Downloaded: ${kb} KB · ${compressImage.width} × ${compressImage.height} px`;
+    resultBox.style.color = '#1f7a3e';
+  }, compressFormat, quality);
+});
+</script>
+
+</body>
+</html>

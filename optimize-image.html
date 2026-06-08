@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Optimize Image for Web – Faster Load Times & Better Core Web Vitals</title>
+
+<meta name="description" content="Optimize images for web performance – convert to WebP, reduce file size and improve page load speed. Free, no upload, minimal quality loss. Works in your browser.">
+
+<link rel="canonical" href="https://imagetoolsuite.com/optimize-image">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ImageToolSuite">
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="Optimize Image for Web – Faster Load Times & Better Core Web Vitals">
+<meta property="og:description" content="Optimize images for web – convert to WebP, reduce load time and improve Core Web Vitals. Free, private, no upload required.">
+<meta property="og:url"         content="https://imagetoolsuite.com/optimize-image">
+<meta property="og:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Optimize Image for Web – Faster Load Times & Better Core Web Vitals">
+<meta name="twitter:description" content="Optimize images for web performance – WebP conversion, smaller files, faster pages. Free, no upload.">
+<meta name="twitter:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<!-- SoftwareApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Optimize Image for Web",
+  "url": "https://imagetoolsuite.com/optimize-image",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free browser-based tool to optimize images for web performance. Convert to WebP, reduce file size and improve Core Web Vitals scores. No upload required.",
+  "featureList": [
+    "Convert images to WebP for web performance",
+    "Reduce page load time with optimized images",
+    "Improve Core Web Vitals LCP score",
+    "Export as WebP, JPG or PNG",
+    "Adjustable quality for size vs speed balance",
+    "No upload – runs in browser"
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I optimize images for web performance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Upload your image to the tool above, select WebP as the output format, set quality to 80–85% and download. WebP images are typically 25–35% smaller than equivalent JPG files, which directly reduces page load time and improves Core Web Vitals scores." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does image optimization matter for SEO?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Google uses page speed as a ranking signal. Images are typically the largest assets on a page and the main cause of slow Largest Contentful Paint (LCP) scores. Optimized images load faster, improve Core Web Vitals and directly affect your search ranking." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is WebP and why is it better for web images?",
+      "acceptedAnswer": { "@type": "Answer", "text": "WebP is a modern image format developed by Google. It produces files 25–35% smaller than JPG and up to 80% smaller than PNG at comparable visual quality. All major browsers support WebP, making it the recommended format for web images." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Largest Contentful Paint (LCP) and how do images affect it?",
+      "acceptedAnswer": { "@type": "Answer", "text": "LCP measures how long it takes for the largest visible element on a page to load – often a hero image or banner. Google considers LCP under 2.5 seconds as Good. Large unoptimized images are the most common cause of poor LCP scores. Optimizing your images is the fastest way to improve LCP." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best image format for websites?",
+      "acceptedAnswer": { "@type": "Answer", "text": "WebP is the best format for most web images – smaller files, good quality, supported by all modern browsers. Use JPG for photos where WebP is not an option. Use PNG only for images that require transparency or lossless quality, such as logos." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much can image optimization improve page load speed?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Significantly. A page with 8 unoptimized JPG images at 1 MB each takes 8+ seconds to load on a mobile connection. The same images optimized to WebP at 150 KB each load in under 1.5 seconds. Google PageSpeed Insights lists image optimization as the single most impactful performance fix for most websites." }
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+<style>
+/* ── Page-specific styles ─────────────────────────── */
+
+.page-nav {
+font-size: 13px;
+color: #888;
+margin: 16px 0 0 0;
+}
+
+.page-nav a {
+color: #4caf50;
+text-decoration: none;
+}
+
+.page-nav a:hover { text-decoration: underline; }
+
+.tool-embed {
+background: white;
+border: 1px solid #ddd;
+border-radius: 12px;
+padding: 28px;
+margin: 24px 0;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tool-embed h2 {
+margin-top: 0;
+margin-bottom: 20px;
+font-size: 1.2rem;
+}
+
+.upload-zone {
+border: 2px dashed #b8bcc2;
+background: #fafbfc;
+border-radius: 10px;
+padding: 36px;
+text-align: center;
+cursor: pointer;
+transition: all 0.2s;
+margin-bottom: 20px;
+}
+
+.upload-zone:hover {
+border-color: #4caf50;
+background: #f0f8f2;
+}
+
+.upload-zone p { margin: 6px 0; font-size: 14px; color: #666; }
+.upload-zone strong { font-size: 15px; color: #333; }
+
+.optimize-cta {
+background: #4caf50;
+color: white;
+border: none;
+padding: 13px 28px;
+border-radius: 8px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s;
+}
+
+.optimize-cta:hover { background: #43a047; }
+
+.quality-wrap {
+margin-bottom: 20px;
+}
+
+.quality-wrap label {
+display: block;
+font-size: 13px;
+font-weight: 600;
+margin-bottom: 8px;
+color: #444;
+}
+
+.quality-row {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.quality-row input[type="range"] { flex: 1; }
+
+.quality-badge {
+background: #f0faf1;
+border: 1px solid #c3e6cb;
+color: #1e7e34;
+border-radius: 999px;
+padding: 3px 12px;
+font-size: 13px;
+font-weight: 600;
+min-width: 44px;
+text-align: center;
+}
+
+/* VITALS SCORE */
+.vitals-row {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 12px;
+margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+.vitals-row { grid-template-columns: 1fr; }
+}
+
+.vitals-card {
+background: #f8f9fb;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 14px 16px;
+text-align: center;
+}
+
+.vitals-card .v-label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+color: #999;
+margin-bottom: 4px;
+}
+
+.vitals-card .v-value {
+font-size: 1.3rem;
+font-weight: 700;
+color: #1a1917;
+}
+
+.vitals-card .v-note {
+font-size: 11px;
+color: #666;
+margin-top: 3px;
+}
+
+/* FORMAT COMPARISON */
+.format-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 14px;
+margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+.format-grid { grid-template-columns: 1fr; }
+}
+
+.format-card {
+background: white;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 18px;
+}
+
+.format-card .format-name {
+font-size: 15px;
+font-weight: 700;
+margin-bottom: 10px;
+padding-bottom: 8px;
+border-bottom: 2px solid #e5e7eb;
+}
+
+.format-card.webp-card .format-name { border-color: #4caf50; color: #1e7e34; }
+.format-card.jpg-card  .format-name { border-color: #f59e0b; color: #b45309; }
+.format-card.png-card  .format-name { border-color: #6366f1; color: #4338ca; }
+
+.format-card ul {
+list-style: none;
+padding: 0;
+margin: 0;
+font-size: 13px;
+color: #3a3835;
+line-height: 1.8;
+}
+
+.format-card ul li::before { content: '→ '; color: #999; }
+
+/* EXAMPLE BOX */
+.example-box {
+background: #f8f9fb;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 20px 24px;
+margin: 20px 0;
+}
+
+.example-arrow {
+display: flex;
+align-items: center;
+gap: 16px;
+flex-wrap: wrap;
+}
+
+.example-before,
+.example-after {
+background: white;
+border: 1px solid #ddd;
+border-radius: 8px;
+padding: 12px 18px;
+text-align: center;
+min-width: 140px;
+}
+
+.example-before .label,
+.example-after .label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+color: #999;
+margin-bottom: 4px;
+}
+
+.example-before .dims { font-size: 1.2rem; font-weight: 700; color: #1a1917; }
+.example-after  .dims { font-size: 1.2rem; font-weight: 700; color: #2d6a4f; }
+.arrow-icon { font-size: 1.5rem; color: #4caf50; }
+
+.example-note {
+font-size: 13px;
+color: #666;
+margin-top: 12px;
+line-height: 1.6;
+}
+
+/* OPTIMIZE TABLE */
+.optimize-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 16px;
+font-size: 14px;
+background: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.optimize-table th {
+background: #1a1917;
+color: white;
+padding: 11px 16px;
+text-align: left;
+font-size: 13px;
+font-weight: 500;
+}
+
+.optimize-table td {
+padding: 10px 16px;
+border-bottom: 1px solid #eee;
+color: #3a3835;
+}
+
+.optimize-table tr:last-child td { border-bottom: none; }
+.optimize-table tr:hover td { background: #f8f9fb; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://imagetoolsuite.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Optimize Image for Web", "item": "https://imagetoolsuite.com/optimize-image"}
+  ]
+}
+</script>
+</head>
+
+<body>
+<nav class="global-nav" aria-label="Main navigation">
+  <a href="/" class="global-nav-logo">ImageToolSuite</a>
+  <div class="global-nav-links">
+    <a href="/">Home</a>
+    <a href="/resize-image">Resize</a>
+    <a href="/compress-image">Compress</a>
+    <a href="/optimize-image">Optimize</a>
+    <a href="/dpi-checker">DPI</a>
+    <a href="/social-media-image-size">Social</a>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<nav class="page-nav">
+  <a href="/">← Image Tool Suite</a> / Optimize Image for Web
+</nav>
+
+<h1>Optimize Image for Web – Faster Load Times &amp; Better Core Web Vitals</h1>
+
+<p class="subtitle">
+  A single unoptimized hero image can push your page load time past <strong>5 seconds</strong> on mobile. This free <strong>image optimization tool</strong> converts your images to WebP, reduces page weight to under <strong>150 KB per image</strong> and helps you hit the Google Core Web Vitals threshold — directly in your browser, no upload required.
+</p>
+
+<p>No upload, no account, 100% private. This tool works directly in your browser using HTML5 canvas technology — your image is processed locally and never sent to any server.</p>
+
+<ul class="feature-list">
+  <li>Convert to WebP for maximum web performance</li>
+  <li>Reduce image payload for faster loading</li>
+  <li>Improve Largest Contentful Paint (LCP)</li>
+  <li>Adjustable quality for size vs speed balance</li>
+  <li>Live file size estimate before download</li>
+  <li>Runs locally – no upload required</li>
+</ul>
+
+<p class="cta-hint">Drop your image below to optimize it for faster website performance instantly.</p>
+
+<!-- TOOL EMBED -->
+<div class="tool-embed" id="tool">
+
+  <h2>Optimize Your Image for Web</h2>
+
+  <div class="upload-zone" id="optimizeUploadZone">
+    <strong>Drop image here to start</strong>
+    <p>or</p>
+    <button class="optimize-cta" onclick="document.getElementById('optimizeFileInput').click()">Select Image</button>
+    <input type="file" id="optimizeFileInput" accept="image/*" hidden>
+    <p style="margin-top:12px; font-size:12px; color:#aaa;">Works best with JPG, PNG and WebP images – processed locally in your browser.</p>
+  </div>
+
+  <div id="optimizeToolControls" style="display:none;">
+
+    <div id="optimizePreviewWrap" style="margin-bottom:20px;">
+      <img id="optimizePreviewImg" src="" alt="Image preview before optimization (WebP recommended for best performance)" style="max-width:100%; max-height:280px; border-radius:8px; object-fit:contain;">
+      <div class="image-info" id="optimizeImageInfo" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="quality-wrap">
+      <label>Output Quality</label>
+      <div class="quality-row">
+        <input type="range" id="optimizeQuality" min="10" max="100" value="82" step="1">
+        <span class="quality-badge" id="optimizeQualityVal">82%</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:#aaa; margin-top:4px;">
+        <span>Smallest / fastest</span>
+        <span>Highest quality</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <div style="font-size:13px; font-weight:600; margin-bottom:6px;">Output Format</div>
+      <div style="font-size:12px; color:#666; margin-bottom:8px;">WebP recommended for best web performance</div>
+      <div style="display:flex; gap:8px;">
+        <button class="convert-btn active" data-format="image/webp">WebP ⭐</button>
+        <button class="convert-btn" data-format="image/jpeg">JPG</button>
+        <button class="convert-btn" data-format="image/png">PNG</button>
+      </div>
+    </div>
+
+    <button class="optimize-cta" id="optimizeDownloadBtn">⬇ Download Optimized Image</button>
+    <div id="optimizeResult" style="margin-top:12px; font-size:14px;"></div>
+
+  </div>
+
+</div><!-- /.tool-embed -->
+
+<p style="font-size:13px; color:#666; margin-top:-8px; margin-bottom:24px;">
+  Tip: Before optimizing, it's often best to <a href="/resize-image" style="color:#4caf50;">resize your image dimensions</a> and <a href="/compress-image" style="color:#4caf50;">reduce file size</a> for maximum performance. If you're preparing images for social platforms, use the <a href="/social-media-image-size" style="color:#4caf50;">social media image size tool</a>.
+</p>
+
+<canvas id="optimizeCanvas" style="display:none;"></canvas>
+
+</div><!-- /.container -->
+
+<!-- SEO CONTENT -->
+<div class="seo-content">
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>How Image Optimization for Web Works</h2>
+    <p>When you <strong>optimize an image for web</strong>, you are doing three things simultaneously: choosing the right format, reducing file size through compression, and ensuring the image loads as fast as possible on any device or connection speed.</p>
+    <p>Format matters more than most people realize. A 1200 × 800 px photo saved as PNG can weigh 2.1 MB. The same image as JPG at 85% quality drops to 320 KB. Convert it to WebP at the same quality and it lands at 190 KB — 91% smaller than the original PNG, with no visible difference on screen.</p>
+    <p>This tool works directly in your browser using HTML5 canvas technology. It re-encodes your image in the selected format at your chosen quality level, giving you a web-ready file that loads fast, scores well on Google PageSpeed Insights and does not compromise visual quality.</p>
+
+    <div class="vitals-row">
+      <div class="vitals-card">
+        <div class="v-label">LCP Target</div>
+        <div class="v-value" style="color:#1e7e34;">≤ 2.5s</div>
+        <div class="v-note">Google "Good" threshold</div>
+      </div>
+      <div class="vitals-card">
+        <div class="v-label">WebP vs JPG</div>
+        <div class="v-value" style="color:#1e7e34;">−30%</div>
+        <div class="v-note">Average file size saving</div>
+      </div>
+      <div class="vitals-card">
+        <div class="v-label">WebP vs PNG</div>
+        <div class="v-value" style="color:#1e7e34;">−80%</div>
+        <div class="v-note">Average file size saving</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Image Format Comparison Explained</h2>
+    <p>Choosing the right format is the single most impactful decision in web image optimization. Here is how the three main formats compare:</p>
+
+    <div class="format-grid">
+      <div class="format-card webp-card">
+        <div class="format-name">WebP ⭐ Recommended</div>
+        <ul>
+          <li>25–35% smaller than JPG</li>
+          <li>Up to 80% smaller than PNG</li>
+          <li>Supports transparency</li>
+          <li>Supported by all modern browsers</li>
+          <li>Best for photos, banners, thumbnails</li>
+          <li>Developed by Google</li>
+        </ul>
+      </div>
+      <div class="format-card jpg-card">
+        <div class="format-name">JPG</div>
+        <ul>
+          <li>Universal browser support</li>
+          <li>Good for photographs</li>
+          <li>No transparency support</li>
+          <li>Larger than WebP at same quality</li>
+          <li>Use when WebP is not possible</li>
+          <li>Lossy only</li>
+        </ul>
+      </div>
+      <div class="format-card png-card">
+        <div class="format-name">PNG</div>
+        <ul>
+          <li>Lossless — no quality loss</li>
+          <li>Supports full transparency</li>
+          <li>Largest file sizes</li>
+          <li>Best for logos, icons, UI elements</li>
+          <li>Avoid for photos on web</li>
+          <li>Use WebP instead where possible</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Example: How Optimization Improves Page Load Speed</h2>
+    <p>A typical product page or blog post loads 6–10 images. If each image is an unoptimized JPG at 800 KB, the total image payload is 5–8 MB — slow on any connection. Here is what optimization achieves:</p>
+
+    <div class="example-box">
+      <div class="example-arrow">
+        <div class="example-before">
+          <div class="label">Before</div>
+          <div class="dims">820 KB</div>
+          <div style="font-size:12px; color:#888; margin-top:4px;">JPG · unoptimized</div>
+        </div>
+        <div class="arrow-icon">→</div>
+        <div class="example-after">
+          <div class="label">After</div>
+          <div class="dims">148 KB</div>
+          <div style="font-size:12px; color:#2d6a4f; margin-top:4px;">WebP · 82% quality</div>
+        </div>
+      </div>
+      <p class="example-note">
+        An 82% reduction in file size. On a standard mobile connection (10 Mbps), this single image goes from loading in
+        0.65 seconds to 0.12 seconds. Multiply across 8 images on a page and you cut total image load time
+        from ~5 seconds to under 1 second — directly improving your LCP score.
+        Use the <a href="#tool">free image optimization tool</a> above to optimize your own images instantly.
+      </p>
+    </div>
+
+    <p>Google PageSpeed Insights flags unoptimized images as the most common performance issue across the web. Converting a full landing page's images from JPG to WebP typically moves a PageSpeed score from the 40–60 range into the 80–95 range.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>When to Use and When Not to Optimize for Web</h2>
+    <p>Web optimization is not the right choice for every situation. Here is a practical guide:</p>
+
+    <table class="optimize-table">
+      <thead><tr><th>Situation</th><th>Optimize?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Website hero images &amp; banners</td><td><span class="badge-good">Yes</span></td><td>Largest images on most pages. WebP at 80–85% cuts load time dramatically.</td></tr>
+        <tr><td>Blog post images</td><td><span class="badge-good">Yes</span></td><td>Multiple images per page. Unoptimized sets hurt Core Web Vitals significantly.</td></tr>
+        <tr><td>E-commerce product photos</td><td><span class="badge-good">Yes</span></td><td>Fast-loading product images reduce bounce rate and improve conversion.</td></tr>
+        <tr><td>Archiving original photos</td><td><span class="badge-bad">No</span></td><td>Always keep originals in full quality. Optimize copies only.</td></tr>
+        <tr><td>Professional print files</td><td><span class="badge-bad">No</span></td><td>Print requires maximum resolution and no lossy encoding.</td></tr>
+        <tr><td>SVG icons and UI elements</td><td><span class="badge-medium">Skip</span></td><td>SVG is already resolution-independent and extremely compact. No raster optimization needed.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="seo-faq">
+
+      <details>
+        <summary>How do I optimize images for web performance?</summary>
+        <div class="seo-faq-body">Upload your image to the <a href="#tool">optimization tool</a> above, select WebP as the output format, set quality to 80–85% and download. WebP images are typically 25–35% smaller than equivalent JPG files, which directly reduces page load time and improves Core Web Vitals scores.</div>
+      </details>
+
+      <details>
+        <summary>Why does image optimization matter for SEO?</summary>
+        <div class="seo-faq-body">Google uses page speed as a direct ranking signal. Images are typically the largest assets on a page and the main cause of slow Largest Contentful Paint (LCP) scores. Optimized images load faster, improve Core Web Vitals and directly affect your position in search results.</div>
+      </details>
+
+      <details>
+        <summary>What is WebP and why is it better for web images?</summary>
+        <div class="seo-faq-body">WebP is a modern image format developed by Google. It produces files 25–35% smaller than JPG and up to 80% smaller than PNG at comparable visual quality. All major browsers — Chrome, Firefox, Safari, Edge — support WebP, making it the recommended format for all web images.</div>
+      </details>
+
+      <details>
+        <summary>What is Largest Contentful Paint (LCP) and how do images affect it?</summary>
+        <div class="seo-faq-body">LCP measures how long it takes for the largest visible element on a page to fully load — most often a hero image or banner. Google considers LCP under 2.5 seconds as "Good". Large unoptimized images are the most common cause of poor LCP scores. Optimizing your hero image to WebP is the fastest way to improve it.</div>
+      </details>
+
+      <details>
+        <summary>What is the best image format for websites?</summary>
+        <div class="seo-faq-body">WebP is the best format for most web images — smallest files, good quality, full browser support. Use JPG for photos where WebP compatibility is a concern. Use PNG only for images requiring transparency or pixel-perfect lossless quality, such as logos. Avoid PNG for photographs — file sizes are unnecessarily large.</div>
+      </details>
+
+      <details>
+        <summary>How much can image optimization improve page load speed?</summary>
+        <div class="seo-faq-body">Significantly. A page with 8 unoptimized JPG images at 800 KB each carries a 6.4 MB image payload. The same images optimized to WebP at 82% quality drop to roughly 140 KB each — a total of 1.1 MB. On a 10 Mbps mobile connection, that is the difference between a 5-second load and a sub-1-second load. For more on file size reduction, see our <a href="/compress-image" style="color:#4caf50;">image compression guide</a>.</div>
+      </details>
+
+    </div>
+  </section>
+
+</div><!-- /.seo-content -->
+
+<footer style="text-align:center; font-size:13px; color:#999; padding:28px 0; border-top:1px solid #e5e7eb; margin-top:20px;">
+  <p>
+    <a href="/" style="color:#4caf50; text-decoration:none;">Image Tools</a> ·
+    <a href="/resize-image" style="color:#4caf50; text-decoration:none;">Resize Image</a> ·
+    <a href="/compress-image" style="color:#4caf50; text-decoration:none;">Compress Image</a> ·
+    <a href="/optimize-image" style="color:#4caf50; text-decoration:none;">Optimize Image</a> ·
+    <a href="/dpi-checker" style="color:#4caf50; text-decoration:none;">DPI Checker</a> ·
+    <a href="/social-media-image-size" style="color:#4caf50; text-decoration:none;">Social Media Sizes</a>
+  </p>
+  <p style="margin-top:8px;">
+    © 2026 ImageToolSuite.com ·
+    <a href="/legal-notice" style="color:#4caf50; text-decoration:none;">Legal Notice</a> ·
+    <a href="/privacy-policy" style="color:#4caf50; text-decoration:none;">Privacy Policy</a> ·
+    <span style="color:#aaa;">Privacy-friendly · No tracking cookies</span>
+  </p>
+</footer>
+
+<script defer>
+// ── Standalone optimize tool ──────────────────────────
+
+let optimizeImage  = null;
+let optimizeFormat = 'image/webp';
+
+const uploadZone    = document.getElementById('optimizeUploadZone');
+const fileInput     = document.getElementById('optimizeFileInput');
+const controls      = document.getElementById('optimizeToolControls');
+const previewImg    = document.getElementById('optimizePreviewImg');
+const imageInfo     = document.getElementById('optimizeImageInfo');
+const qualitySlider = document.getElementById('optimizeQuality');
+const qualityVal    = document.getElementById('optimizeQualityVal');
+const downloadBtn   = document.getElementById('optimizeDownloadBtn');
+const canvas        = document.getElementById('optimizeCanvas');
+const resultBox     = document.getElementById('optimizeResult');
+
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) loadImage(e.target.files[0]);
+});
+
+uploadZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#4caf50';
+  uploadZone.style.background  = '#f0f8f2';
+});
+
+uploadZone.addEventListener('dragleave', () => {
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+});
+
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+  if (e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+});
+
+function loadImage(file) {
+  if (!file.type.startsWith('image/')) return alert('Please select a valid image file.');
+  const originalKB = (file.size / 1024).toFixed(0);
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    optimizeImage = img;
+    previewImg.src = url;
+    imageInfo.innerHTML = `<b>Original size:</b> ${originalKB} KB &nbsp;·&nbsp; <b>Dimensions:</b> ${img.width} × ${img.height} px`;
+    uploadZone.style.display = 'none';
+    controls.style.display   = 'block';
+    updateEstimate();
+  };
+  img.src = url;
+}
+
+qualitySlider.addEventListener('input', () => {
+  qualityVal.textContent = qualitySlider.value + '%';
+  updateEstimate();
+});
+
+function updateEstimate() {
+  if (!optimizeImage) return;
+  canvas.width  = optimizeImage.width;
+  canvas.height = optimizeImage.height;
+  canvas.getContext('2d').drawImage(optimizeImage, 0, 0);
+  canvas.toBlob(blob => {
+    const kb = (blob.size / 1024).toFixed(0);
+    resultBox.innerHTML = `Estimated output: <strong>${kb} KB</strong>`;
+    resultBox.style.color = '#555';
+  }, optimizeFormat, qualitySlider.value / 100);
+}
+
+document.querySelectorAll('.convert-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.convert-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    optimizeFormat = btn.dataset.format;
+    updateEstimate();
+  });
+});
+
+downloadBtn.addEventListener('click', () => {
+  if (!optimizeImage) return;
+  canvas.width  = optimizeImage.width;
+  canvas.height = optimizeImage.height;
+  canvas.getContext('2d').drawImage(optimizeImage, 0, 0);
+  const quality = qualitySlider.value / 100;
+  canvas.toBlob(blob => {
+    const ext  = optimizeFormat.split('/')[1];
+    const url  = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href     = url;
+    link.download = `optimized-web.${ext}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const kb = (blob.size / 1024).toFixed(0);
+    resultBox.innerHTML = `✓ Downloaded: ${kb} KB · ${optimizeImage.width} × ${optimizeImage.height} px`;
+    resultBox.style.color = '#1f7a3e';
+  }, optimizeFormat, quality);
+});
+</script>
+
+</body>
+</html>

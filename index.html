@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Image Tool Suite – DPI & Resolution Tool</title>
+<meta name="description" content="Free image checker online: instantly analyze resolution, DPI, print size, quality and EXIF data. No upload needed – 100% private, runs in your browser.">
+<link rel="canonical" href="https://imagetoolsuite.com/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ImageToolSuite">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image Tool Suite – DPI & Resolution Tool">
+<meta property="og:description" content="Analyze image resolution, DPI, print size and quality instantly – free, private, no upload required.">
+<meta property="og:url" content="https://imagetoolsuite.com/">
+<meta property="og:image" content="https://imagetoolsuite.com/og-image.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Image Tool Suite – DPI & Resolution Tool">
+<meta name="twitter:description" content="Check image resolution, DPI, print size and quality – free, no upload, 100% private.">
+<meta name="twitter:image" content="https://imagetoolsuite.com/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Image Tool Suite",
+  "url": "https://imagetoolsuite.com/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free browser-based tool to check image resolution, DPI, print size, quality and EXIF metadata. No upload required."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What does an image checker tool do?", "acceptedAnswer": { "@type": "Answer", "text": "An image checker online free tool analyzes your image directly in the browser — no upload, no server. It reads pixel dimensions, DPI, file size, EXIF metadata and calculates print sizes." } },
+    { "@type": "Question", "name": "How do I check image resolution online for free?", "acceptedAnswer": { "@type": "Answer", "text": "Drop or select your image in the tool above. The resolution checker instantly shows width, height, DPI and print sizes at 72, 150 and 300 DPI." } },
+    { "@type": "Question", "name": "What is a good image resolution for printing?", "acceptedAnswer": { "@type": "Answer", "text": "300 DPI is the professional standard. A 3000x2000 px image at 300 DPI yields a 10x6.67 inch print. For web use, 72-96 DPI is sufficient." } },
+    { "@type": "Question", "name": "What is the difference between DPI and image resolution?", "acceptedAnswer": { "@type": "Answer", "text": "Resolution is the total pixel count (e.g. 4000x3000 px). DPI describes how densely those pixels are printed per inch. Same image, different DPI = different print size." } },
+    { "@type": "Question", "name": "Is my image uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. Everything runs locally in your browser. Your image never leaves your device." } }
+  ]
+}
+</script>
+
+<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+</head>
+
+<body>
+<nav class="global-nav" aria-label="Main navigation">
+  <a href="/" class="global-nav-logo">ImageToolSuite</a>
+  <div class="global-nav-links">
+    <a href="/">Home</a>
+    <a href="/resize-image">Resize</a>
+    <a href="/compress-image">Compress</a>
+    <a href="/optimize-image">Optimize</a>
+    <a href="/dpi-checker">DPI</a>
+    <a href="/social-media-image-size">Social</a>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<h1>Image Tool Suite – DPI &amp; Resolution Tool</h1>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Free browser-based image analysis tool</h2>
+
+<p class="subtitle">
+This free <strong>image checker online free</strong> tool analyzes resolution, DPI and image quality instantly – directly in your browser. No upload required.
+</p>
+<p>This image resolution checker shows pixel dimensions and calculates print size instantly.</p>
+
+<div class="privacy-box">🔒 <strong>Your images stay private.</strong> This tool analyzes your images directly in your browser. Nothing is uploaded or stored on any server.</div>
+
+<ul class="feature-list">
+  <li>Free image checker tool – no upload required</li>
+  <li>Check resolution, DPI and print size instantly</li>
+  <li>Supports JPG, PNG and WebP</li>
+  <li>100% private – runs in your browser</li>
+  <li>Includes EXIF data and quality analysis</li>
+</ul>
+<p>This image quality checker helps you determine if your image is suitable for print, web or social media.</p>
+<p class="cta-hint">Drop your image or click below to instantly check resolution, DPI and print size.</p>
+
+<div id="tool">
+<div id="dropZone">
+
+<p id="dropText">Drop your images to start analysis</p>
+<p>or</p>
+
+<input type="file" id="imageUpload" aria-label="Upload image files" accept="image/*" multiple hidden>
+
+<button id="uploadBtn" onclick="document.getElementById('imageUpload').click()">Select Image</button>
+
+<p class="drop-hint">
+Supports JPG, PNG, WebP – images are processed locally in your browser.
+</p>
+
+</div>
+</div><!-- /#tool -->
+
+<!-- PHASE 2: SPINNER -->
+<div id="loading">
+<div class="spinner"></div>
+Analyzing image...
+</div>
+
+<div class="tool-layout">
+
+<div class="left-column">
+<div id="preview"></div>
+
+<div id="ratioCalc"></div>
+
+<div id="metadata"></div>
+</div>
+
+<div id="result"></div>
+
+<div id="analysis"></div>
+
+</div>
+
+
+<!-- IMAGE TOOLS -->
+
+<div class="image-tools" id="imageTools" style="display:none;">
+
+<h3>Image Tools</h3>
+
+<div class="tool-box">
+
+<h3>Resize Image</h3>
+
+<div class="resize-controls">
+
+<!-- LEFT COLUMN -->
+<div class="resize-left">
+
+<label>Width</label>
+<div class="input-group">
+<input type="number" id="resizeWidth">
+<span class="unit">px</span>
+</div>
+
+<label>Height</label>
+<div class="input-group">
+<input type="number" id="resizeHeight">
+<span class="unit">px</span>
+</div>
+
+<label class="ratio-checkbox">
+<input type="checkbox" id="lockRatio" checked>
+Maintain aspect ratio
+</label>
+
+</div>
+
+
+<!-- RIGHT COLUMN -->
+<div class="resize-right">
+
+<div class="tool-section">
+
+<label class="section-title">Quick resize</label>
+
+<div class="preset-buttons">
+<button class="preset" data-size="1200">Website Image (1200 px)</button>
+<button class="preset" data-size="1600">Blog Header (1600 px)</button>
+<button class="preset" data-size="1080">Instagram Post (1080 px)</button>
+<button class="preset" data-size="1280">YouTube Thumb (1280 px)</button>
+</div>
+<div id="presetStatus"></div>
+
+</div>
+
+
+<div class="tool-section">
+
+<label class="section-title">Output Format</label>
+
+<div class="format-buttons">
+<button class="convert-btn active" data-format="image/jpeg">JPG</button>
+<button class="convert-btn" data-format="image/png">PNG</button>
+<button class="convert-btn" data-format="image/webp">WEBP</button>
+</div>
+
+</div>
+
+
+<div class="tool-section">
+
+<div class="quality-header">
+<label class="section-title">Compression Quality</label>
+<span id="qualityValue">80%</span>
+</div>
+
+<input
+type="range"
+id="qualitySlider"
+min="0.1"
+max="1"
+step="0.1"
+value="0.8"
+>
+
+</div>
+
+</div>
+
+<button id="resizeBtn">⬇ Download Optimized Image</button>
+
+<div id="resizeResult" class="resize-result" style="display:none"></div>
+
+</div>
+
+</div>
+
+</div><!-- /.image-tools -->
+
+<canvas id="resizeCanvas" style="display:none;"></canvas>
+
+</div><!-- /.container -->
+
+<script src="https://cdn.jsdelivr.net/npm/exif-js" defer></script>
+<script src="js/app.js" defer></script>
+
+<!-- SEO CONTENT -->
+<div class="seo-content">
+
+  
+<!-- HUB SECTION -->
+<section class="hub-section" aria-labelledby="hub-heading">
+  <h2 id="hub-heading">Free Image Tools – Everything in One Place</h2>
+  <p>ImageToolSuite is a suite of free, privacy-first image tools. Every tool runs directly in your browser — no uploads, no accounts, no data ever leaves your device. Choose the tool that matches your task:</p>
+
+  <div class="hub-grid">
+
+    <a href="/resize-image" class="hub-card">
+      <div class="hub-card-title">Resize Image Online</div>
+      <div class="hub-card-desc">Change width and height in pixels while maintaining aspect ratio. Scale down photos for websites or resize to exact social media dimensions.</div>
+      <div class="hub-card-cta">Resize image →</div>
+    </a>
+
+    <a href="/compress-image" class="hub-card">
+      <div class="hub-card-title">Compress Image Online</div>
+      <div class="hub-card-desc">Reduce file size from MB to KB without changing pixel dimensions. Ideal for email attachments, upload limits and faster websites.</div>
+      <div class="hub-card-cta">Compress image →</div>
+    </a>
+
+    <a href="/optimize-image" class="hub-card">
+      <div class="hub-card-title">Optimize Image for Web</div>
+      <div class="hub-card-desc">Convert to WebP, reduce page weight and improve Core Web Vitals. The fastest way to boost your Google PageSpeed score.</div>
+      <div class="hub-card-cta">Optimize image →</div>
+    </a>
+
+    <a href="/dpi-checker" class="hub-card">
+      <div class="hub-card-title">Image DPI Checker</div>
+      <div class="hub-card-desc">Check if your image has enough resolution for print. Calculate exact print size in cm and inches at 300, 150 and 72 DPI.</div>
+      <div class="hub-card-cta">Check DPI →</div>
+    </a>
+
+    <a href="/social-media-image-size" class="hub-card">
+      <div class="hub-card-title">Social Media Image Size</div>
+      <div class="hub-card-desc">Get the correct dimensions for Instagram, Facebook, TikTok, YouTube and more. One-click presets for every platform and format.</div>
+      <div class="hub-card-cta">Check sizes →</div>
+    </a>
+
+  </div>
+</section>
+
+<hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>How the Image Checker Tool Works</h2>
+    <p>This free image checker tool runs entirely in your browser — no server, no upload, no waiting. Drop or select any image and get an instant analysis in three steps.</p>
+    <div class="seo-steps">
+      <div class="seo-step"><span class="seo-step-num">01</span><strong>Select or Drop</strong><p>Choose any JPG, PNG or WebP. Nothing is transmitted to any server.</p></div>
+      <div class="seo-step"><span class="seo-step-num">02</span><strong>Instant Analysis</strong><p>The tool reads pixel dimensions, DPI, file size, EXIF data and sharpness score.</p></div>
+      <div class="seo-step"><span class="seo-step-num">03</span><strong>Get Your Results</strong><p>See print size estimates, social format checks and optional resize &amp; download.</p></div>
+    </div>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>What Is Image Resolution in an Image Checker?</h2>
+    <p>Image resolution describes the total number of pixels in a digital image, expressed as <strong>width × height</strong> (e.g. 4000 × 3000 px). The higher the pixel count, the more detail the image contains — and the larger it can be printed or displayed without degradation.</p>
+    <p>When people use an <strong>image resolution checker</strong>, they want to know: how many pixels does the image have, and how large can it be printed while still looking sharp? That second question requires DPI. To check your image's print readiness directly, use the <a href="/dpi-checker">check image DPI</a>.</p>
+    <p>A 1000 × 1000 px image is low resolution for print but fine for a small web profile picture. Context always matters.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>DPI vs. Resolution — What's the Difference?</h2>
+    <p><strong>DPI (dots per inch)</strong> describes print density — how many ink dots fit within one inch of printed output. <strong>Resolution</strong> (pixel count) is a fixed property of the file. DPI is the relationship between the file and the physical output.</p>
+    <p>The same image can be printed at different DPI values, changing the print size without altering the pixel data.</p>
+    <div class="seo-formula">
+      <div class="seo-formula-label">Print Size Formula</div>
+      <div class="seo-formula-main">Print Size (inches) = Pixels ÷ DPI</div>
+      <div class="seo-formula-example">Example: 3000 px ÷ 300 DPI = <strong>10 inches</strong></div>
+    </div>
+    <p><strong>72 DPI</strong> — standard for screens. <strong>150 DPI</strong> — acceptable for posters. <strong>300 DPI</strong> — professional print standard. If your image needs to be larger for print, the first step is to <a href="/resize-image">resize image online to higher pixel dimensions</a>.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>What Resolution Is Needed for Print?</h2>
+    <p>The minimum pixel dimensions depend on your print size and quality requirements. Use this table as a quick reference:</p>
+    <table class="seo-table">
+      <thead><tr><th>Image Size (px)</th><th>DPI</th><th>Print Size</th><th>Quality</th></tr></thead>
+      <tbody>
+        <tr><td>3000 × 2000</td><td>300</td><td>10 × 6.67 in</td><td><span class="badge-good">Print-ready</span></td></tr>
+        <tr><td>1500 × 1000</td><td>300</td><td>5 × 3.33 in</td><td><span class="badge-good">Print-ready</span></td></tr>
+        <tr><td>3000 × 2000</td><td>150</td><td>20 × 13.33 in</td><td><span class="badge-medium">Draft / Poster</span></td></tr>
+        <tr><td>800 × 600</td><td>300</td><td>2.67 × 2 in</td><td><span class="badge-medium">Small print only</span></td></tr>
+        <tr><td>640 × 480</td><td>72</td><td>8.9 × 6.7 in</td><td><span class="badge-bad">Screen only</span></td></tr>
+        <tr><td>4000 × 3000</td><td>300</td><td>13.3 × 10 in</td><td><span class="badge-good">Large format</span></td></tr>
+      </tbody>
+    </table>
+    <p class="seo-hint">Formula: inches = pixels ÷ DPI. For cm, multiply by 2.54.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Example: Convert Pixels to Print Size</h2>
+    <p>A <strong>4000 × 3000 px</strong> image at <strong>300 DPI</strong> prints at <strong>13.3 × 10 inches</strong> (33.8 × 25.4 cm) — large format, print-ready quality.</p>
+    <p>The same image at <strong>150 DPI</strong> prints at 26.7 × 20 inches. Twice as large, but noticeably softer. Fine for a poster viewed from a distance, not for close-up print work.</p>
+    <p>At <strong>72 DPI</strong>, it would cover 55.6 × 41.7 inches — far too large to look sharp. Use the <a href="#tool">free image checker tool</a> above to instantly calculate the exact print size for your own image. See also our <a href="#faq">image checker FAQ</a> for common questions.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div class="seo-faq">
+      <details>
+        <summary>What does an image checker tool do?</summary>
+        <div class="seo-faq-body">An image checker tool analyzes pixel dimensions, DPI, file size, EXIF metadata and print size — directly in your browser, without uploading anything to a server. It tells you whether your image is suitable for print, web or social media.</div>
+      </details>
+      <details>
+        <summary>How do I check image resolution online for free?</summary>
+        <div class="seo-faq-body">Drop or select your image in the tool above. The image resolution checker instantly shows width, height in pixels, the embedded DPI, and print sizes at 72, 150 and 300 DPI. No account needed.</div>
+      </details>
+      <details>
+        <summary>What is a good image resolution for printing?</summary>
+        <div class="seo-faq-body"><strong>300 DPI</strong> is the industry standard for professional prints. A 3000 × 2000 px image at 300 DPI yields a sharp 10 × 6.67 inch print. For posters, 150 DPI is often sufficient. For web, 72–96 DPI is all you need.</div>
+      </details>
+      <details>
+        <summary>What is the difference between DPI and image resolution?</summary>
+        <div class="seo-faq-body">Image resolution is the total pixel count (e.g. 4000 × 3000 px) — a fixed property of the file. DPI (dots per inch) describes how densely those pixels are printed on paper. The same file at 300 DPI prints small and sharp; at 72 DPI it prints large and blurry.</div>
+      </details>
+      <details>
+        <summary>Is my image uploaded to a server when I use this tool?</summary>
+        <div class="seo-faq-body">No. Everything runs locally in your browser via JavaScript. Your image never leaves your device — no upload, no storage, no privacy risk.</div>
+      </details>
+    </div>
+  </section>
+
+
+  <hr class="seo-divider">
+
+  <section class="seo-section" aria-labelledby="about-heading">
+    <h2 id="about-heading">About ImageToolSuite</h2>
+    <p>
+      ImageToolSuite was built out of a simple frustration: too many image tools require
+      uploading your files to a remote server — even for basic tasks like checking resolution
+      or resizing a photo. That means your images pass through someone else's infrastructure,
+      get stored in logs and are subject to data retention policies you never agreed to.
+    </p>
+    <p>
+      Every tool on this site uses the browser's built-in <strong>HTML5 File API and Canvas API</strong>
+      to process images locally on your device. This is not a policy promise — it is a technical
+      constraint. There is no server-side code that could receive your images, because images are
+      never sent anywhere in the first place.
+    </p>
+    <p>
+      The result is a suite of tools that is genuinely faster, genuinely private and completely free.
+      No accounts. No subscriptions. No ads served against your uploaded content.
+      If you need to <a href="/resize-image">resize an image</a>, <a href="/compress-image">compress it for email</a>,
+      <a href="/optimize-image">optimize it for web performance</a>, <a href="/dpi-checker">check if it is print-ready</a>
+      or <a href="/social-media-image-size">prepare it for social media</a> — you can do all of that here,
+      without ever handing your files to a third party.
+    </p>
+  </section>
+
+</div><!-- /.seo-content -->
+
+
+<footer style="text-align:center; font-size:13px; color:#999; padding:28px 0; border-top:1px solid #e5e7eb; margin-top:20px;">
+  <p>
+    <a href="/" style="color:#4caf50; text-decoration:none;">Image Tools</a> ·
+    <a href="/resize-image" style="color:#4caf50; text-decoration:none;">Resize Image</a> ·
+    <a href="/compress-image" style="color:#4caf50; text-decoration:none;">Compress Image</a> ·
+    <a href="/optimize-image" style="color:#4caf50; text-decoration:none;">Optimize Image</a> ·
+    <a href="/dpi-checker" style="color:#4caf50; text-decoration:none;">DPI Checker</a> ·
+    <a href="/social-media-image-size" style="color:#4caf50; text-decoration:none;">Social Media Sizes</a>
+  </p>
+  <p style="margin-top:8px;">
+    © 2026 ImageToolSuite.com ·
+    <a href="/legal-notice" style="color:#4caf50; text-decoration:none;">Legal Notice</a> ·
+    <a href="/privacy-policy" style="color:#4caf50; text-decoration:none;">Privacy Policy</a> ·
+    <span style="color:#aaa;">Privacy-friendly · No tracking cookies</span>
+  </p>
+</footer>
+
+</body>
+</html>

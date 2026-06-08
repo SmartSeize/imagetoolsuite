@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Image DPI Checker – Check Image Resolution for Print Instantly</title>
+
+<meta name="description" content="Check if your image is print-ready (300 DPI) – calculate exact print size in cm and inches, instant verdict for A4, A3 and photo sizes. Free, no upload required.">
+
+<link rel="canonical" href="https://imagetoolsuite.com/dpi-checker">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ImageToolSuite">
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="Image DPI Checker – Check Image Resolution for Print Instantly">
+<meta property="og:description" content="Check if your image has enough DPI for print. Calculate exact print size in cm and inches. Free, private, no upload required.">
+<meta property="og:url"         content="https://imagetoolsuite.com/dpi-checker">
+<meta property="og:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Image DPI Checker – Check Image Resolution for Print Instantly">
+<meta name="twitter:description" content="Check image DPI for print – calculate print size in cm and inches, instant verdict. Free, no upload.">
+<meta name="twitter:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<!-- SoftwareApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Image DPI Checker",
+  "url": "https://imagetoolsuite.com/dpi-checker",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free browser-based tool to check image DPI and print resolution. Calculate exact print size in cm and inches, get an instant print-readiness verdict.",
+  "featureList": [
+    "Check if image is print-ready at 300 DPI",
+    "Calculate exact print size from pixels",
+    "Check A4, A3 and standard photo sizes",
+    "Show effective DPI at target print size",
+    "Read embedded DPI from EXIF metadata",
+    "No upload – runs in browser"
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I check image DPI for printing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Upload your image to the DPI checker tool above. It instantly reads the embedded DPI value, calculates the maximum printable size at 300 DPI, 150 DPI and 72 DPI, and gives you a clear verdict on whether your image is ready for professional print." }
+    },
+    {
+      "@type": "Question",
+      "name": "What DPI do I need for printing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "300 DPI is the professional standard for sharp, high-quality prints. 150 DPI is acceptable for large-format prints viewed from a distance, such as posters. 72 DPI is screen resolution only and will appear blurry when printed at full size." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate print size from pixels?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Divide the pixel dimension by the DPI to get the print size in inches. For example: 3000 px ÷ 300 DPI = 10 inches (25.4 cm). A 4000 × 3000 px image at 300 DPI prints at 13.3 × 10 inches (33.8 × 25.4 cm)." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum resolution for an A4 print?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For a sharp A4 print at 300 DPI you need at least 2480 × 3508 px. At 150 DPI (acceptable for drafts), 1240 × 1754 px is sufficient. At 72 DPI the image would look blurry even in a low-quality printout." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my image look sharp on screen but blurry when printed?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Screens display at 72–96 PPI (pixels per inch), so a 1000 × 700 px image looks large and sharp on a monitor. When printed at the same physical size, that resolution translates to only 35 DPI – far below the 300 DPI needed for a sharp print. The image appears blurry because there are not enough pixels to fill the printed area." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between DPI and PPI?",
+      "acceptedAnswer": { "@type": "Answer", "text": "PPI (pixels per inch) refers to the pixel density of a digital image or screen. DPI (dots per inch) technically refers to the ink dot density of a printer. In practice, both terms are used interchangeably when discussing image resolution for print. When a print lab asks for 300 DPI, they mean 300 pixels per inch in the image file." }
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+<style>
+/* ── Page-specific styles ─────────────────────────── */
+
+.page-nav {
+font-size: 13px;
+color: #888;
+margin: 16px 0 0 0;
+}
+
+.page-nav a {
+color: #4caf50;
+text-decoration: none;
+}
+
+.page-nav a:hover { text-decoration: underline; }
+
+.tool-embed {
+background: white;
+border: 1px solid #ddd;
+border-radius: 12px;
+padding: 28px;
+margin: 24px 0;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tool-embed h2 {
+margin-top: 0;
+margin-bottom: 20px;
+font-size: 1.2rem;
+}
+
+.upload-zone {
+border: 2px dashed #b8bcc2;
+background: #fafbfc;
+border-radius: 10px;
+padding: 36px;
+text-align: center;
+cursor: pointer;
+transition: all 0.2s;
+margin-bottom: 20px;
+}
+
+.upload-zone:hover {
+border-color: #4caf50;
+background: #f0f8f2;
+}
+
+.upload-zone p { margin: 6px 0; font-size: 14px; color: #666; }
+.upload-zone strong { font-size: 15px; color: #333; }
+
+.dpi-cta {
+background: #4caf50;
+color: white;
+border: none;
+padding: 13px 28px;
+border-radius: 8px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s;
+}
+
+.dpi-cta:hover { background: #43a047; }
+
+/* DPI VERDICT CARDS */
+.dpi-verdict-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 12px;
+margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+.dpi-verdict-grid { grid-template-columns: 1fr; }
+}
+
+.dpi-verdict-card {
+border-radius: 10px;
+padding: 14px 16px;
+text-align: center;
+border: 1px solid #e5e7eb;
+}
+
+.dpi-verdict-card .dv-dpi {
+font-size: 1.4rem;
+font-weight: 700;
+margin-bottom: 4px;
+}
+
+.dpi-verdict-card .dv-label {
+font-size: 12px;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+margin-bottom: 6px;
+}
+
+.dpi-verdict-card .dv-note {
+font-size: 12px;
+color: #666;
+line-height: 1.4;
+}
+
+.dv-good    { background: #e8f5ec; border-color: #c3e6cb; }
+.dv-good .dv-dpi, .dv-good .dv-label { color: #1f7a3e; }
+
+.dv-medium  { background: #fff8e1; border-color: #ffe082; }
+.dv-medium .dv-dpi, .dv-medium .dv-label { color: #b26a00; }
+
+.dv-bad     { background: #fdeaea; border-color: #f5c6cb; }
+.dv-bad .dv-dpi, .dv-bad .dv-label { color: #c92a2a; }
+
+/* PRINT RESULT TABLE */
+.print-result-box {
+background: #f8f9fb;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 20px;
+margin-top: 16px;
+}
+
+.print-result-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 8px 0;
+border-bottom: 1px solid #eee;
+font-size: 14px;
+}
+
+.print-result-row:last-child { border-bottom: none; }
+
+/* EXAMPLE BOX */
+.example-box {
+background: #f8f9fb;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 20px 24px;
+margin: 20px 0;
+}
+
+.example-arrow {
+display: flex;
+align-items: center;
+gap: 16px;
+flex-wrap: wrap;
+}
+
+.example-before,
+.example-after {
+background: white;
+border: 1px solid #ddd;
+border-radius: 8px;
+padding: 12px 18px;
+text-align: center;
+min-width: 140px;
+}
+
+.example-before .label,
+.example-after .label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+color: #999;
+margin-bottom: 4px;
+}
+
+.example-before .dims { font-size: 1.2rem; font-weight: 700; color: #1a1917; }
+.example-after  .dims { font-size: 1.2rem; font-weight: 700; color: #2d6a4f; }
+.arrow-icon { font-size: 1.5rem; color: #4caf50; }
+
+.example-note {
+font-size: 13px;
+color: #666;
+margin-top: 12px;
+line-height: 1.6;
+}
+
+/* FORMULA BOX */
+.seo-formula {
+background: #1a1917;
+color: #f7f6f2;
+border-radius: 10px;
+padding: 20px 24px;
+margin: 20px 0;
+font-family: 'Courier New', monospace;
+}
+
+.seo-formula-label {
+font-size: 11px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: #888;
+margin-bottom: 8px;
+font-family: Arial, sans-serif;
+}
+
+.seo-formula-main  { font-size: 1.15rem; color: #fff; margin-bottom: 6px; }
+.seo-formula-example { font-size: 13px; color: #aaa; }
+.seo-formula-example strong { color: #6fcf97; }
+
+/* DPI TABLE */
+.dpi-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 16px;
+font-size: 14px;
+background: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dpi-table th {
+background: #1a1917;
+color: white;
+padding: 11px 16px;
+text-align: left;
+font-size: 13px;
+font-weight: 500;
+}
+
+.dpi-table td {
+padding: 10px 16px;
+border-bottom: 1px solid #eee;
+color: #3a3835;
+}
+
+.dpi-table tr:last-child td { border-bottom: none; }
+.dpi-table tr:hover td { background: #f8f9fb; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://imagetoolsuite.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Image DPI Checker", "item": "https://imagetoolsuite.com/dpi-checker"}
+  ]
+}
+</script>
+</head>
+
+<body>
+<nav class="global-nav" aria-label="Main navigation">
+  <a href="/" class="global-nav-logo">ImageToolSuite</a>
+  <div class="global-nav-links">
+    <a href="/">Home</a>
+    <a href="/resize-image">Resize</a>
+    <a href="/compress-image">Compress</a>
+    <a href="/optimize-image">Optimize</a>
+    <a href="/dpi-checker">DPI</a>
+    <a href="/social-media-image-size">Social</a>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<nav class="page-nav">
+  <a href="/">← Image Tool Suite</a> / DPI Checker
+</nav>
+
+<h1>Image DPI Checker – Check Image Resolution for Print Instantly</h1>
+
+<p class="subtitle">
+  Before sending an image to print, you need to know: is it sharp enough? A <strong>3000 × 2000 px</strong> photo prints at <strong>10 × 6.67 inches (25.4 × 16.9 cm)</strong> at 300 DPI — crisp and professional. The same file at 72 DPI covers 41 × 27 inches and looks blurry. This free <strong>image DPI checker</strong> gives you the exact verdict in seconds, no upload needed.
+</p>
+
+<p>No upload, no account, 100% private. This tool works directly in your browser using HTML5 canvas technology — your image is analyzed locally and never sent to any server.</p>
+
+<ul class="feature-list">
+  <li>Check image DPI for print readiness</li>
+  <li>Calculate print size in cm and inches</li>
+  <li>Instant verdict at 72, 150 and 300 DPI</li>
+  <li>Check against A4, A3 and letter sizes</li>
+  <li>Read embedded DPI from EXIF data</li>
+  <li>Runs locally – no upload required</li>
+</ul>
+
+<p class="cta-hint">Drop your image below to check its DPI and print size instantly.</p>
+
+<!-- TOOL EMBED -->
+<div class="tool-embed" id="tool">
+
+  <h2>Check Your Image DPI &amp; Print Size</h2>
+
+  <div class="upload-zone" id="dpiUploadZone">
+    <strong>Drop image here to start</strong>
+    <p>or</p>
+    <button class="dpi-cta" onclick="document.getElementById('dpiFileInput').click()">Select Image</button>
+    <input type="file" id="dpiFileInput" accept="image/*" hidden>
+    <p style="margin-top:12px; font-size:12px; color:#aaa;">Works best with JPG, PNG and WebP images – processed locally in your browser.</p>
+  </div>
+
+  <div id="dpiToolControls" style="display:none;">
+
+    <div id="dpiPreviewWrap" style="margin-bottom:16px;">
+      <img id="dpiPreviewImg" src="" alt="Image preview for DPI and print resolution analysis" style="max-width:100%; max-height:240px; border-radius:8px; object-fit:contain;">
+    </div>
+
+    <div class="image-info" id="dpiImageInfo" style="margin-bottom:16px;"></div>
+
+    <div class="dpi-verdict-grid" id="dpiVerdictGrid"></div>
+
+    <div class="print-result-box" id="dpiPrintResults"></div>
+
+  </div>
+
+</div><!-- /.tool-embed -->
+
+<p style="font-size:13px; color:#666; margin-top:-8px; margin-bottom:24px;">
+  Tip: If your image is too small for print, you can <a href="/resize-image" style="color:#4caf50;">resize it to larger dimensions</a>, <a href="/compress-image" style="color:#4caf50;">reduce the file size</a> or check the full image quality with the <a href="/" style="color:#4caf50;">free image checker tool</a>. For web usage instead of print, you should <a href="/optimize-image" style="color:#4caf50;">optimize your image for faster loading</a>.
+</p>
+
+</div><!-- /.container -->
+
+<!-- SEO CONTENT -->
+<div class="seo-content">
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>How the Image DPI Checker Works</h2>
+    <p>DPI stands for <strong>dots per inch</strong> — it describes how many pixels from your image file are mapped to one inch of physical print area. The higher the DPI, the sharper and more detailed the printed result.</p>
+    <p>When you drop an image into this <strong>image DPI checker</strong>, it reads the pixel dimensions directly from the file and calculates the maximum printable size at the three standard DPI values used in the print industry: 300 DPI (professional quality), 150 DPI (poster quality) and 72 DPI (screen resolution). You get an instant, clear verdict on whether your image is ready to print.</p>
+    <p>The tool also reads any embedded DPI metadata from the EXIF data of your file. Many cameras and scanners embed a DPI value — but this number alone is not enough. What matters is the total pixel count relative to your target print size.</p>
+
+    <div class="dpi-verdict-grid">
+      <div class="dpi-verdict-card dv-good">
+        <div class="dv-dpi">300 DPI</div>
+        <div class="dv-label">Professional Print</div>
+        <div class="dv-note">Sharp at any viewing distance. Standard for magazines, photos and marketing materials.</div>
+      </div>
+      <div class="dpi-verdict-card dv-medium">
+        <div class="dv-dpi">150 DPI</div>
+        <div class="dv-label">Poster / Draft</div>
+        <div class="dv-note">Acceptable for large prints viewed from distance. Not suitable for close-up detail work.</div>
+      </div>
+      <div class="dpi-verdict-card dv-bad">
+        <div class="dv-dpi">72 DPI</div>
+        <div class="dv-label">Screen Only</div>
+        <div class="dv-note">Standard for web and screen. Will appear visibly blurry when printed at full physical size.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Print Size Calculation Explained</h2>
+    <p>The relationship between pixel count, DPI and print size follows one simple formula. Understanding it tells you exactly what print size your image supports — before you send anything to a print lab.</p>
+
+    <div class="seo-formula">
+      <div class="seo-formula-label">Print Size Formula</div>
+      <div class="seo-formula-main">Print size (inches) = Pixel dimension ÷ DPI</div>
+      <div class="seo-formula-example">
+        3000 px ÷ 300 DPI = <strong>10 inches (25.4 cm)</strong><br>
+        3000 px ÷ 150 DPI = <strong>20 inches (50.8 cm)</strong><br>
+        3000 px ÷ 72 DPI &nbsp;= <strong>41.7 inches (105.9 cm)</strong>
+      </div>
+    </div>
+
+    <p>The same 3000 px dimension produces three completely different print sizes depending on the DPI. At 300 DPI it fills a crisp 10-inch print. At 72 DPI it spans over 41 inches — far too large for the pixel data available, producing a blurry result.</p>
+
+    <p>To convert inches to centimeters, multiply by 2.54. To find the <strong>minimum pixels needed</strong> for a target print size, reverse the formula: multiply your target inches by 300. An A4 print (8.27 × 11.69 inches) requires at least <strong>2480 × 3507 px</strong> at 300 DPI.</p>
+
+    <table class="dpi-table">
+      <thead><tr><th>Image Size (px)</th><th>At 300 DPI</th><th>At 150 DPI</th><th>Print Ready?</th></tr></thead>
+      <tbody>
+        <tr><td>2480 × 3508</td><td>A4 (21 × 29.7 cm)</td><td>A3 (42 × 59.4 cm)</td><td><span class="badge-good">Yes – A4 at 300 DPI</span></td></tr>
+        <tr><td>3508 × 4961</td><td>A3 (29.7 × 42 cm)</td><td>A2 (59.4 × 84 cm)</td><td><span class="badge-good">Yes – A3 at 300 DPI</span></td></tr>
+        <tr><td>4000 × 3000</td><td>13.3 × 10 in</td><td>26.7 × 20 in</td><td><span class="badge-good">Yes – large format</span></td></tr>
+        <tr><td>1500 × 1000</td><td>5 × 3.3 in</td><td>10 × 6.7 in</td><td><span class="badge-medium">Small prints only</span></td></tr>
+        <tr><td>800 × 600</td><td>2.7 × 2 in</td><td>5.3 × 4 in</td><td><span class="badge-bad">Too small for most prints</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Example: Convert 4000 × 3000 Pixels to Print Size</h2>
+    <p>A typical 12-megapixel smartphone or DSLR photo comes in at 4000 × 3000 px. Here is exactly what that means for print at the professional 300 DPI standard:</p>
+
+    <div class="example-box">
+      <div class="example-arrow">
+        <div class="example-before">
+          <div class="label">Image file</div>
+          <div class="dims">4000 × 3000 px</div>
+          <div style="font-size:12px; color:#888; margin-top:4px;">12 megapixels</div>
+        </div>
+        <div class="arrow-icon">→</div>
+        <div class="example-after">
+          <div class="label">Print size at 300 DPI</div>
+          <div class="dims">13.3 × 10 in</div>
+          <div style="font-size:12px; color:#2d6a4f; margin-top:4px;">33.8 × 25.4 cm</div>
+        </div>
+      </div>
+      <p class="example-note">
+        At 300 DPI, the image prints sharp at 33.8 × 25.4 cm — larger than A4, comfortably fitting A4 with margin.
+        At 150 DPI, the same image covers 67.7 × 50.8 cm — suitable for a poster viewed from 1–2 meters.
+        Use the <a href="#tool">free DPI checker tool</a> above to calculate the exact print size for your own image.
+      </p>
+    </div>
+
+    <p>A common mistake: sending a 1200 × 900 px image to a print lab for an A4 poster. At 300 DPI that image only covers 4 × 3 inches — far too small. The lab either rejects it or stretches it, producing a blurry print. The DPI checker catches this before it costs you a print order.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>When to Use and When Not to Check DPI</h2>
+    <p>A DPI check is essential before sending anything to print. Here is when it matters — and when it is irrelevant:</p>
+
+    <table class="dpi-table">
+      <thead><tr><th>Situation</th><th>Check DPI?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Sending to a professional print lab</td><td><span class="badge-good">Yes</span></td><td>Labs require 300 DPI minimum. Submitting below this will result in rejection or blurry output.</td></tr>
+        <tr><td>Printing at home on A4 or letter</td><td><span class="badge-good">Yes</span></td><td>Home printers reproduce fine detail. Anything below 150 DPI will look noticeably soft.</td></tr>
+        <tr><td>Large-format banners or posters</td><td><span class="badge-good">Yes</span></td><td>Viewed from distance — 100–150 DPI is often acceptable, but you need to verify before ordering.</td></tr>
+        <tr><td>Displaying on a website or screen</td><td><span class="badge-bad">Not needed</span></td><td>Screens use pixel dimensions, not DPI. The embedded DPI value is irrelevant for web display.</td></tr>
+        <tr><td>Uploading to social media</td><td><span class="badge-bad">Not needed</span></td><td>Platforms ignore DPI entirely. Only pixel dimensions matter for social media images.</td></tr>
+        <tr><td>Sending via email or messaging</td><td><span class="badge-medium">Optional</span></td><td>Only relevant if the recipient intends to print. For digital viewing only, DPI does not matter.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="seo-faq">
+
+      <details>
+        <summary>How do I check image DPI for printing?</summary>
+        <div class="seo-faq-body">Upload your image to the <a href="#tool">DPI checker tool</a> above. It instantly reads the embedded DPI value, calculates the maximum printable size at 300, 150 and 72 DPI, and gives you a clear verdict on whether your image is ready for professional print — all without uploading to any server.</div>
+      </details>
+
+      <details>
+        <summary>What DPI do I need for printing?</summary>
+        <div class="seo-faq-body">300 DPI is the professional standard for sharp, high-quality prints — photos, brochures, business cards and marketing materials. 150 DPI is acceptable for large-format prints viewed from a distance, such as exhibition banners. 72 DPI is screen resolution only and will appear blurry in print.</div>
+      </details>
+
+      <details>
+        <summary>How do I calculate print size from pixels?</summary>
+        <div class="seo-faq-body">Divide the pixel dimension by the DPI to get the print size in inches, then multiply by 2.54 for centimeters. Example: 3000 px ÷ 300 DPI = 10 inches = 25.4 cm. A 4000 × 3000 px image at 300 DPI prints at 13.3 × 10 inches (33.8 × 25.4 cm).</div>
+      </details>
+
+      <details>
+        <summary>What is the minimum resolution for an A4 print?</summary>
+        <div class="seo-faq-body">For a sharp A4 print at 300 DPI you need at least 2480 × 3508 px. At 150 DPI (acceptable for drafts and internal documents), 1240 × 1754 px is sufficient. The DPI checker tool above automatically compares your image against A4, A3 and standard photo sizes.</div>
+      </details>
+
+      <details>
+        <summary>Why does my image look sharp on screen but blurry when printed?</summary>
+        <div class="seo-faq-body">Screens display at 72–96 PPI, so a 1000 × 700 px image looks large and sharp on a monitor. When that same image is printed at a standard physical size, the pixel density drops far below 300 DPI — producing a blurry print. The fix is to always start with a higher-resolution original. If you need to improve resolution, see our <a href="/resize-image" style="color:#4caf50;">image resize tool</a>.</div>
+      </details>
+
+      <details>
+        <summary>What is the difference between DPI and PPI?</summary>
+        <div class="seo-faq-body">PPI (pixels per inch) refers to the pixel density of a digital image or screen. DPI (dots per inch) technically refers to the ink dot density of a physical printer output. In practice, both terms are used interchangeably when discussing print resolution. When a print lab asks for "300 DPI", they mean 300 pixels per inch in the source image file.</div>
+      </details>
+
+    </div>
+  </section>
+
+</div><!-- /.seo-content -->
+
+<footer style="text-align:center; font-size:13px; color:#999; padding:28px 0; border-top:1px solid #e5e7eb; margin-top:20px;">
+  <p>
+    <a href="/" style="color:#4caf50; text-decoration:none;">Image Tools</a> ·
+    <a href="/resize-image" style="color:#4caf50; text-decoration:none;">Resize Image</a> ·
+    <a href="/compress-image" style="color:#4caf50; text-decoration:none;">Compress Image</a> ·
+    <a href="/optimize-image" style="color:#4caf50; text-decoration:none;">Optimize Image</a> ·
+    <a href="/dpi-checker" style="color:#4caf50; text-decoration:none;">DPI Checker</a> ·
+    <a href="/social-media-image-size" style="color:#4caf50; text-decoration:none;">Social Media Sizes</a>
+  </p>
+  <p style="margin-top:8px;">
+    © 2026 ImageToolSuite.com ·
+    <a href="/legal-notice" style="color:#4caf50; text-decoration:none;">Legal Notice</a> ·
+    <a href="/privacy-policy" style="color:#4caf50; text-decoration:none;">Privacy Policy</a> ·
+    <span style="color:#aaa;">Privacy-friendly · No tracking cookies</span>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/exif-js" defer></script>
+
+<script defer>
+// ── Standalone DPI checker tool ───────────────────────
+
+const uploadZone  = document.getElementById('dpiUploadZone');
+const fileInput   = document.getElementById('dpiFileInput');
+const controls    = document.getElementById('dpiToolControls');
+const previewImg  = document.getElementById('dpiPreviewImg');
+const imageInfo   = document.getElementById('dpiImageInfo');
+const verdictGrid = document.getElementById('dpiVerdictGrid');
+const printResults= document.getElementById('dpiPrintResults');
+
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) loadImage(e.target.files[0]);
+});
+
+uploadZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#4caf50';
+  uploadZone.style.background  = '#f0f8f2';
+});
+
+uploadZone.addEventListener('dragleave', () => {
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+});
+
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+  if (e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+});
+
+function printSize(px, dpi) {
+  const inches = px / dpi;
+  const cm     = inches * 2.54;
+  return { inches: inches.toFixed(1), cm: cm.toFixed(1) };
+}
+
+function dpiVerdict(dpi) {
+  if (dpi >= 300) return { label: 'Print-ready', cls: 'badge-good' };
+  if (dpi >= 150) return { label: 'Poster quality', cls: 'badge-medium' };
+  return { label: 'Screen only', cls: 'badge-bad' };
+}
+
+function loadImage(file) {
+  if (!file.type.startsWith('image/')) return alert('Please select a valid image file.');
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+
+  img.onload = () => {
+    const w = img.width;
+    const h = img.height;
+    const mp = ((w * h) / 1000000).toFixed(1);
+
+    previewImg.src = url;
+    uploadZone.style.display = 'none';
+    controls.style.display   = 'block';
+
+    // Try to read embedded DPI from EXIF
+    let embeddedDpi = '–';
+    try {
+      EXIF.getData(file, function() {
+        const xRes = EXIF.getTag(this, 'XResolution');
+        if (xRes) embeddedDpi = Math.round(xRes) + ' DPI';
+        renderResults(w, h, mp, embeddedDpi);
+      });
+    } catch(e) {
+      renderResults(w, h, mp, embeddedDpi);
+    }
+  };
+
+  img.src = url;
+}
+
+function renderResults(w, h, mp, embeddedDpi) {
+
+  imageInfo.innerHTML = `
+    <b>Dimensions:</b> ${w} × ${h} px &nbsp;·&nbsp;
+    <b>Megapixels:</b> ${mp} MP &nbsp;·&nbsp;
+    <b>Embedded DPI:</b> ${embeddedDpi}
+  `;
+
+  // Effective DPI at A4
+  const a4W = 8.27, a4H = 11.69;
+  const effectiveDpi = Math.round(Math.min(w / a4W, h / a4H));
+  const v = dpiVerdict(effectiveDpi);
+
+  verdictGrid.innerHTML = `
+    <div class="dpi-verdict-card ${effectiveDpi >= 300 ? 'dv-good' : effectiveDpi >= 150 ? 'dv-medium' : 'dv-bad'}">
+      <div class="dv-dpi">${effectiveDpi} DPI</div>
+      <div class="dv-label">Effective at A4</div>
+      <div class="dv-note"><span class="status-badge ${v.cls}">${v.label}</span></div>
+    </div>
+    <div class="dpi-verdict-card dv-good">
+      <div class="dv-dpi">${printSize(w, 300).cm} × ${printSize(h, 300).cm} cm</div>
+      <div class="dv-label">Max size at 300 DPI</div>
+      <div class="dv-note">${printSize(w, 300).inches} × ${printSize(h, 300).inches} in</div>
+    </div>
+    <div class="dpi-verdict-card dv-medium">
+      <div class="dv-dpi">${printSize(w, 150).cm} × ${printSize(h, 150).cm} cm</div>
+      <div class="dv-label">Max size at 150 DPI</div>
+      <div class="dv-note">${printSize(w, 150).inches} × ${printSize(h, 150).inches} in</div>
+    </div>
+  `;
+
+  // Paper size checks
+  function checkPaper(nameStr, wIn, hIn) {
+    const dpiNeeded = Math.round(Math.min(w / wIn, h / hIn));
+    const ok = dpiNeeded >= 300;
+    const mid = dpiNeeded >= 150;
+    const cls = ok ? 'badge-good' : mid ? 'badge-medium' : 'badge-bad';
+    const lbl = ok ? 'Print-ready' : mid ? 'Poster quality' : 'Too small';
+    return `<div class="print-result-row">
+      <span>${nameStr}</span>
+      <span class="status-badge ${cls}">${lbl} (${dpiNeeded} DPI)</span>
+    </div>`;
+  }
+
+  printResults.innerHTML =
+    '<div style="font-size:13px; font-weight:600; margin-bottom:8px;">Paper Size Check</div>' +
+    checkPaper('A4 (21 × 29.7 cm)', 8.27, 11.69) +
+    checkPaper('A3 (29.7 × 42 cm)', 11.69, 16.54) +
+    checkPaper('A2 (42 × 59.4 cm)', 16.54, 23.39) +
+    checkPaper('Letter (8.5 × 11 in)', 8.5, 11) +
+    checkPaper('4×6 in Photo', 4, 6) +
+    checkPaper('5×7 in Photo', 5, 7) +
+    checkPaper('8×10 in Photo', 8, 10);
+}
+</script>
+
+</body>
+</html>

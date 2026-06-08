@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Resize Image Online Free – Change Image Size in Pixels Instantly</title>
+
+<meta name="description" content="Resize images online for free – set exact width & height in pixels, keep aspect ratio and download instantly. No upload, no quality loss, 100% private.">
+
+<link rel="canonical" href="https://imagetoolsuite.com/resize-image">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ImageToolSuite">
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="Resize Image Online Free – Change Image Size in Pixels Instantly">
+<meta property="og:description" content="Change image dimensions in pixels, maintain aspect ratio and resize without losing quality – free, private, no upload required.">
+<meta property="og:url"         content="https://imagetoolsuite.com/resize-image">
+<meta property="og:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Resize Image Online Free – Change Image Size in Pixels Instantly">
+<meta name="twitter:description" content="Resize image online free – change pixels, keep aspect ratio, no upload needed.">
+<meta name="twitter:image"       content="https://imagetoolsuite.com/og-image.png">
+
+<!-- SoftwareApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Resize Image Online Free",
+  "url": "https://imagetoolsuite.com/resize-image",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free browser-based tool to resize images online. Change width and height in pixels, maintain aspect ratio, no upload required.",
+  "featureList": [
+    "Resize image online free",
+    "Change width and height in pixels",
+    "Maintain aspect ratio",
+    "Resize images to exact pixel dimensions",
+    "Export as JPG, PNG or WebP",
+    "No upload – runs in browser"
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I resize an image online for free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Upload your image to the resize tool above, enter your target width or height in pixels, and click download. The tool runs entirely in your browser – no upload to any server required." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I resize an image without losing quality?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You can resize an image down (make it smaller) without visible quality loss. Resizing up (enlarging) always reduces sharpness because pixels are interpolated. For best results, always resize down from a larger original." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does maintaining aspect ratio mean when resizing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Aspect ratio is the proportional relationship between an image's width and height. Maintaining it means if you change the width, the height adjusts automatically to keep the image from appearing stretched or squashed." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best image size for a website?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For most website images, 1200–1600 px wide is ideal. Hero images work well at 1920 px wide. Thumbnails and card images typically need 400–800 px. Larger dimensions slow down page load without visual benefit." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between resizing and cropping an image?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Resizing changes the pixel dimensions of the entire image while keeping all content visible. Cropping removes parts of the image to reach a target size or ratio. Resizing scales everything; cropping cuts the frame." }
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+<style>
+/* ── Page-specific styles ─────────────────────────── */
+
+.page-nav {
+font-size: 13px;
+color: #888;
+margin: 16px 0 0 0;
+}
+
+.page-nav a {
+color: #4caf50;
+text-decoration: none;
+}
+
+.page-nav a:hover {
+text-decoration: underline;
+}
+
+.tool-embed {
+background: white;
+border: 1px solid #ddd;
+border-radius: 12px;
+padding: 28px;
+margin: 24px 0;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tool-embed h2 {
+margin-top: 0;
+margin-bottom: 20px;
+font-size: 1.2rem;
+}
+
+.resize-inline-controls {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+.resize-inline-controls { grid-template-columns: 1fr; }
+}
+
+.resize-field label {
+display: block;
+font-size: 13px;
+font-weight: 600;
+margin-bottom: 6px;
+color: #444;
+}
+
+.resize-field input {
+width: 100%;
+padding: 10px 12px;
+border: 1px solid #ccc;
+border-radius: 8px;
+font-size: 15px;
+box-sizing: border-box;
+}
+
+.ratio-toggle {
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 14px;
+font-weight: 500;
+margin-bottom: 16px;
+color: #444;
+}
+
+.ratio-toggle input { margin: 0; cursor: pointer; }
+
+.resize-cta {
+background: #4caf50;
+color: white;
+border: none;
+padding: 13px 28px;
+border-radius: 8px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s;
+}
+
+.resize-cta:hover { background: #43a047; }
+
+.upload-zone {
+border: 2px dashed #b8bcc2;
+background: #fafbfc;
+border-radius: 10px;
+padding: 36px;
+text-align: center;
+cursor: pointer;
+transition: all 0.2s;
+margin-bottom: 20px;
+}
+
+.upload-zone:hover {
+border-color: #4caf50;
+background: #f0f8f2;
+}
+
+.upload-zone p { margin: 6px 0; font-size: 14px; color: #666; }
+.upload-zone strong { font-size: 15px; color: #333; }
+
+/* EXAMPLE BOX */
+.example-box {
+background: #f8f9fb;
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 20px 24px;
+margin: 20px 0;
+}
+
+.example-arrow {
+display: flex;
+align-items: center;
+gap: 16px;
+flex-wrap: wrap;
+}
+
+.example-before,
+.example-after {
+background: white;
+border: 1px solid #ddd;
+border-radius: 8px;
+padding: 12px 18px;
+text-align: center;
+min-width: 140px;
+}
+
+.example-before .label,
+.example-after .label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+color: #999;
+margin-bottom: 4px;
+}
+
+.example-before .dims {
+font-size: 1.2rem;
+font-weight: 700;
+color: #1a1917;
+}
+
+.example-after .dims {
+font-size: 1.2rem;
+font-weight: 700;
+color: #2d6a4f;
+}
+
+.arrow-icon {
+font-size: 1.5rem;
+color: #4caf50;
+}
+
+.example-note {
+font-size: 13px;
+color: #666;
+margin-top: 12px;
+line-height: 1.6;
+}
+
+/* WHEN TO RESIZE TABLE */
+.resize-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 16px;
+font-size: 14px;
+background: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.resize-table th {
+background: #1a1917;
+color: white;
+padding: 11px 16px;
+text-align: left;
+font-size: 13px;
+font-weight: 500;
+}
+
+.resize-table td {
+padding: 10px 16px;
+border-bottom: 1px solid #eee;
+color: #3a3835;
+}
+
+.resize-table tr:last-child td { border-bottom: none; }
+.resize-table tr:hover td { background: #f8f9fb; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://imagetoolsuite.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Resize Image Online Free", "item": "https://imagetoolsuite.com/resize-image"}
+  ]
+}
+</script>
+</head>
+
+<body>
+<nav class="global-nav" aria-label="Main navigation">
+  <a href="/" class="global-nav-logo">ImageToolSuite</a>
+  <div class="global-nav-links">
+    <a href="/">Home</a>
+    <a href="/resize-image">Resize</a>
+    <a href="/compress-image">Compress</a>
+    <a href="/optimize-image">Optimize</a>
+    <a href="/dpi-checker">DPI</a>
+    <a href="/social-media-image-size">Social</a>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<nav class="page-nav">
+<a href="/">← Image Tool Suite</a> / Resize Image
+</nav>
+
+<h1>Resize Image Online Free – Change Image Size in Pixels Instantly</h1>
+
+<p class="subtitle">
+Resize images to exact pixel dimensions in seconds. Whether you need a <strong>1200 × 800 px</strong> image for your website, a precise <strong>1080 × 1080 px</strong> square for Instagram, or a <strong>1920 × 1080 px</strong> frame for a presentation – this free <strong>image resize tool</strong> lets you change width and height instantly while keeping proportions intact.
+</p>
+
+<p>No upload, no account, 100% private. This tool works directly in your browser using HTML5 canvas technology — your image is processed locally and never sent to any server.</p>
+
+<ul class="feature-list">
+  <li>Set exact width &amp; height in pixels</li>
+  <li>Maintain aspect ratio automatically</li>
+  <li>Resize images without distortion</li>
+  <li>Scale down large photos for web use</li>
+  <li>Instant preview before download</li>
+  <li>Runs locally – no upload required</li>
+</ul>
+
+<p class="cta-hint">Drop your image below to resize it instantly.</p>
+
+<!-- TOOL EMBED -->
+<div class="tool-embed" id="tool">
+
+  <h2>Resize Your Image</h2>
+
+  <div class="upload-zone" id="resizeUploadZone">
+    <strong>Drop image here to start</strong>
+    <p>or</p>
+    <button class="resize-cta" onclick="document.getElementById('resizeFileInput').click()">Select Image</button>
+    <input type="file" id="resizeFileInput" accept="image/*" hidden>
+    <p style="margin-top:12px; font-size:12px; color:#aaa;">Works best with JPG, PNG and WebP images – processed locally in your browser.</p>
+  </div>
+
+  <div id="resizeToolControls" style="display:none;">
+
+    <div id="resizePreviewWrap" style="margin-bottom:20px;">
+      <img id="resizePreviewImg" src="" alt="Image selected for resizing – adjust dimensions below" style="max-width:100%; max-height:280px; border-radius:8px; object-fit:contain;">
+      <div class="image-info" id="resizeImageInfo" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="resize-inline-controls">
+      <div class="resize-field">
+        <label for="subResizeWidth">Width (px)</label>
+        <input type="number" id="subResizeWidth" min="1" placeholder="e.g. 1200">
+      </div>
+      <div class="resize-field">
+        <label for="subResizeHeight">Height (px)</label>
+        <input type="number" id="subResizeHeight" min="1" placeholder="e.g. 900">
+      </div>
+    </div>
+
+    <label class="ratio-toggle">
+      <input type="checkbox" id="subLockRatio" checked>
+      Maintain aspect ratio
+    </label>
+
+    <div style="margin-bottom:16px;">
+      <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Quick Resize</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <button class="preset" data-w="1920" data-h="1080">Full HD (1920×1080)</button>
+        <button class="preset" data-w="1280" data-h="720">HD (1280×720)</button>
+        <button class="preset" data-w="1200" data-h="630">Facebook Post</button>
+        <button class="preset" data-w="1080" data-h="1080">Instagram Square</button>
+        <button class="preset" data-w="800" data-h="600">Web Medium</button>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Output Format</div>
+      <div style="display:flex; gap:8px;">
+        <button class="convert-btn active" data-format="image/jpeg">JPG</button>
+        <button class="convert-btn" data-format="image/png">PNG</button>
+        <button class="convert-btn" data-format="image/webp">WEBP</button>
+      </div>
+    </div>
+
+    <button class="resize-cta" id="subResizeBtn">⬇ Download Resized Image</button>
+    <div id="subResizeResult" style="margin-top:12px; font-size:14px;"></div>
+
+  </div>
+
+</div><!-- /.tool-embed -->
+
+<p style="font-size:13px; color:#666; margin-top:-8px; margin-bottom:24px;">
+  Tip: After resizing, you can also <a href="/compress-image" style="color:#4caf50;">reduce the file size further</a> or check quality with the <a href="/" style="color:#4caf50;">free image checker tool</a>. If you're preparing images for websites, you may also want to <a href="/optimize-image" style="color:#4caf50;">optimize your image for web performance</a> or resize for specific platforms using the <a href="/social-media-image-size" style="color:#4caf50;">social media image size tool</a>.
+</p>
+
+<canvas id="subResizeCanvas" style="display:none;"></canvas>
+
+</div><!-- /.container -->
+
+<!-- SEO CONTENT -->
+<div class="seo-content">
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>How Image Resizing Works</h2>
+    <p>When you <strong>resize an image online</strong>, you are changing the total number of pixels that make up the image. A 4000 × 3000 px photo contains 12 million pixels. Resize it to 1200 × 900 px and you have 1.08 million — the image is scaled down proportionally, each pixel recalculated from the original data.</p>
+    <p>The algorithm used for this process is called interpolation. When scaling down, pixels are averaged and merged — the result looks sharp because you are removing information. When scaling up, new pixels are invented between existing ones — which is why enlarging always introduces softness or blur.</p>
+    <p><strong>The rule of thumb:</strong> always resize down from the highest-resolution original you have. Never resize up if sharpness matters.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Aspect Ratio Explained</h2>
+    <p>Aspect ratio is the proportional relationship between an image's width and height. A 1920 × 1080 px image has a 16:9 ratio. A 1080 × 1080 px image is 1:1. These ratios stay constant regardless of pixel size.</p>
+    <p>When you resize an image <strong>while maintaining aspect ratio</strong>, changing the width automatically adjusts the height to keep the same proportions. This prevents your image from appearing stretched or squashed.</p>
+    <p>If you need a specific width <em>and</em> a specific height that don't match the original ratio, you have two options: crop the image (remove parts of it), or distort it (not recommended). The resize tool above lets you unlock the ratio if needed.</p>
+
+    <div class="example-box">
+      <div style="font-size:13px; font-weight:600; color:#666; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.05em;">Common Aspect Ratios</div>
+      <table class="resize-table">
+        <thead><tr><th>Ratio</th><th>Example Size</th><th>Best Used For</th></tr></thead>
+        <tbody>
+          <tr><td>16:9</td><td>1920 × 1080 px</td><td>YouTube, presentations, widescreen</td></tr>
+          <tr><td>1:1</td><td>1080 × 1080 px</td><td>Instagram posts, profile pictures</td></tr>
+          <tr><td>4:3</td><td>1200 × 900 px</td><td>Blog images, traditional photo format</td></tr>
+          <tr><td>4:5</td><td>1080 × 1350 px</td><td>Instagram portrait posts</td></tr>
+          <tr><td>9:16</td><td>1080 × 1920 px</td><td>Stories, Reels, TikTok</td></tr>
+          <tr><td>3:2</td><td>1200 × 800 px</td><td>DSLR photos, general web use</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>Example: Resize 4000 × 3000 to 1200 × 900</h2>
+    <p>A typical DSLR or smartphone photo comes in at 4000 × 3000 px (12 megapixels). For most web uses, that is far larger than necessary. Here is what resizing looks like in practice:</p>
+
+    <div class="example-box">
+      <div class="example-arrow">
+        <div class="example-before">
+          <div class="label">Original</div>
+          <div class="dims">4000 × 3000</div>
+          <div style="font-size:12px; color:#888; margin-top:4px;">~5–8 MB JPG</div>
+        </div>
+        <div class="arrow-icon">→</div>
+        <div class="example-after">
+          <div class="label">Resized</div>
+          <div class="dims">1200 × 900</div>
+          <div style="font-size:12px; color:#2d6a4f; margin-top:4px;">~200–400 KB JPG</div>
+        </div>
+      </div>
+      <p class="example-note">
+        The aspect ratio stays at 4:3 — no distortion. The image is 70% smaller in each dimension. 
+        At 1200 px wide it displays perfectly on any standard website or blog without pixelation.
+        Use the <a href="#tool">free image resize tool</a> above to resize your own image in seconds.
+      </p>
+    </div>
+
+    <p>Another common use case: resizing a 6000 × 4000 px photo to exactly 1080 × 720 px for a social media post. Same principle — the ratio is preserved (3:2), the pixel count drops from 24 MP to 0.78 MP, and the file loads instantly on any device.</p>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section">
+    <h2>When to Use and When Not to Resize</h2>
+    <p>Resizing is not always the right move. Here are the cases where you should leave your image at its original size — and when resizing makes sense:</p>
+
+    <table class="resize-table">
+      <thead><tr><th>Situation</th><th>Resize?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Uploading to a website or blog</td><td><span class="badge-good">Yes</span></td><td>Large images slow down page load. 1200–1600 px is enough.</td></tr>
+        <tr><td>Sending by email</td><td><span class="badge-good">Yes</span></td><td>Attachments above 2–3 MB are often blocked. Resize to 1000–1200 px.</td></tr>
+        <tr><td>Posting to social media</td><td><span class="badge-good">Yes</span></td><td>Each platform has an ideal pixel size. Resize to avoid auto-cropping.</td></tr>
+        <tr><td>Printing at large format</td><td><span class="badge-bad">No</span></td><td>Keep full resolution for print. Resizing down reduces print sharpness.</td></tr>
+        <tr><td>Archiving originals</td><td><span class="badge-bad">No</span></td><td>Always keep the original. Resize copies, never the source file.</td></tr>
+        <tr><td>Enlarging a small image</td><td><span class="badge-medium">Caution</span></td><td>Upscaling adds blur. Only do this if you have no higher-res alternative.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="seo-divider">
+
+  <section class="seo-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="seo-faq">
+
+      <details>
+        <summary>How do I resize an image online for free?</summary>
+        <div class="seo-faq-body">Drop your image into the <a href="#tool">resize tool</a> above, enter your target width or height in pixels, and click download. The tool runs entirely in your browser — no upload to any server, no account needed.</div>
+      </details>
+
+      <details>
+        <summary>Can I resize an image without losing quality?</summary>
+        <div class="seo-faq-body">Resizing down (making smaller) can be done without visible quality loss. The tool uses interpolation to recalculate pixels accurately. Resizing up (enlarging) always introduces some softness because new pixels have to be invented. For best results, always start with the largest original available.</div>
+      </details>
+
+      <details>
+        <summary>What does maintaining aspect ratio mean when resizing?</summary>
+        <div class="seo-faq-body">Aspect ratio is the proportional width-to-height relationship of an image. Maintaining it means if you change the width, the height adjusts automatically — so the image doesn't appear stretched or squashed. The tool locks the ratio by default; you can unlock it if you need a specific non-proportional size.</div>
+      </details>
+
+      <details>
+        <summary>What is the best image size for a website?</summary>
+        <div class="seo-faq-body">For most website images, 1200–1600 px wide is the sweet spot. Hero or banner images work well at 1920 px. Thumbnails and card images typically need 400–800 px. Larger dimensions add no visible benefit but increase load time significantly.</div>
+      </details>
+
+      <details>
+        <summary>What is the difference between resizing and cropping an image?</summary>
+        <div class="seo-faq-body">Resizing scales the entire image to new pixel dimensions — all content stays visible, just smaller or larger. Cropping removes parts of the image to change the frame or reach a specific size. Resizing changes the scale; cropping changes what is included. If you need to reduce file size rather than dimensions, see our guide on <a href="/compress-image" style="color:#4caf50;">compressing images</a>.</div>
+      </details>
+
+      <details>
+        <summary>What happens if I resize an image too much?</summary>
+        <div class="seo-faq-body">If you resize an image too small, you permanently discard pixel data — enlarging it again will produce a blurry result. If you resize too large, the tool invents new pixels through interpolation, which softens edges and reduces sharpness. The safest approach: keep the original file untouched, resize a copy, and never go beyond 2× the original dimensions when enlarging.</div>
+      </details>
+
+    </div>
+  </section>
+
+</div><!-- /.seo-content -->
+
+<footer style="text-align:center; font-size:13px; color:#999; padding:28px 0; border-top:1px solid #e5e7eb; margin-top:20px;">
+  <p>
+    <a href="/" style="color:#4caf50; text-decoration:none;">Image Tools</a> ·
+    <a href="/resize-image" style="color:#4caf50; text-decoration:none;">Resize Image</a> ·
+    <a href="/compress-image" style="color:#4caf50; text-decoration:none;">Compress Image</a> ·
+    <a href="/optimize-image" style="color:#4caf50; text-decoration:none;">Optimize Image</a> ·
+    <a href="/dpi-checker" style="color:#4caf50; text-decoration:none;">DPI Checker</a> ·
+    <a href="/social-media-image-size" style="color:#4caf50; text-decoration:none;">Social Media Sizes</a>
+  </p>
+  <p style="margin-top:8px;">
+    © 2026 ImageToolSuite.com ·
+    <a href="/legal-notice" style="color:#4caf50; text-decoration:none;">Legal Notice</a> ·
+    <a href="/privacy-policy" style="color:#4caf50; text-decoration:none;">Privacy Policy</a> ·
+    <span style="color:#aaa;">Privacy-friendly · No tracking cookies</span>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/exif-js" defer></script>
+
+<script defer>
+// ── Standalone resize tool for subpage ───────────────
+
+let subImage = null;
+let subAspectRatio = 1;
+let subFormat = 'image/jpeg';
+
+const uploadZone   = document.getElementById('resizeUploadZone');
+const fileInput    = document.getElementById('resizeFileInput');
+const controls     = document.getElementById('resizeToolControls');
+const previewImg   = document.getElementById('resizePreviewImg');
+const imageInfo    = document.getElementById('resizeImageInfo');
+const widthInput   = document.getElementById('subResizeWidth');
+const heightInput  = document.getElementById('subResizeHeight');
+const lockRatio    = document.getElementById('subLockRatio');
+const resizeBtn    = document.getElementById('subResizeBtn');
+const resizeCanvas = document.getElementById('subResizeCanvas');
+const resizeResult = document.getElementById('subResizeResult');
+
+// Upload via click
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) loadImage(e.target.files[0]);
+});
+
+// Drag & drop
+uploadZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#4caf50';
+  uploadZone.style.background  = '#f0f8f2';
+});
+
+uploadZone.addEventListener('dragleave', () => {
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+});
+
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#b8bcc2';
+  uploadZone.style.background  = '#fafbfc';
+  if (e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+});
+
+function loadImage(file) {
+  if (!file.type.startsWith('image/')) return alert('Please select a valid image file.');
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    subImage = img;
+    subAspectRatio = img.width / img.height;
+    previewImg.src = url;
+    widthInput.value  = img.width;
+    heightInput.value = img.height;
+    imageInfo.innerHTML = `<b>Original size:</b> ${img.width} × ${img.height} px`;
+    uploadZone.style.display  = 'none';
+    controls.style.display    = 'block';
+  };
+  img.src = url;
+}
+
+// Lock ratio
+widthInput.addEventListener('input', () => {
+  if (lockRatio.checked && subImage) {
+    heightInput.value = Math.round(widthInput.value / subAspectRatio);
+  }
+});
+
+heightInput.addEventListener('input', () => {
+  if (lockRatio.checked && subImage) {
+    widthInput.value = Math.round(heightInput.value * subAspectRatio);
+  }
+});
+
+// Presets
+document.querySelectorAll('.preset[data-w]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset[data-w]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    widthInput.value  = btn.dataset.w;
+    heightInput.value = btn.dataset.h;
+    lockRatio.checked = false;
+  });
+});
+
+// Format buttons
+document.querySelectorAll('.convert-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.convert-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    subFormat = btn.dataset.format;
+  });
+});
+
+// Download
+resizeBtn.addEventListener('click', () => {
+  if (!subImage) return;
+  const w = parseInt(widthInput.value);
+  const h = parseInt(heightInput.value);
+  if (!w || !h) return alert('Please enter valid dimensions.');
+
+  resizeCanvas.width  = w;
+  resizeCanvas.height = h;
+  resizeCanvas.getContext('2d').drawImage(subImage, 0, 0, w, h);
+
+  resizeCanvas.toBlob(blob => {
+    const ext  = subFormat.split('/')[1];
+    const url  = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href     = url;
+    link.download = `resized-${w}x${h}.${ext}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    resizeResult.innerHTML = `✓ Downloaded: ${w} × ${h} px · ${(blob.size/1024).toFixed(0)} KB`;
+    resizeResult.style.color = '#1f7a3e';
+  }, subFormat, 0.92);
+});
+</script>
+
+</body>
+</html>
