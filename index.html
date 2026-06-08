@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -115,7 +115,7 @@ Supports JPG, PNG, WebP – images are processed locally in your browser.
 </div><!-- /#tool -->
 
 <!-- PHASE 2: SPINNER -->
-<div id="loading">
+<div id="loading" role="status" aria-live="polite">
 <div class="spinner"></div>
 Analyzing image...
 </div>
@@ -152,13 +152,13 @@ Analyzing image...
 <!-- LEFT COLUMN -->
 <div class="resize-left">
 
-<label>Width</label>
+<label for="resizeWidth">Width</label>
 <div class="input-group">
 <input type="number" id="resizeWidth">
 <span class="unit">px</span>
 </div>
 
-<label>Height</label>
+<label for="resizeHeight">Height</label>
 <div class="input-group">
 <input type="number" id="resizeHeight">
 <span class="unit">px</span>
@@ -177,7 +177,7 @@ Maintain aspect ratio
 
 <div class="tool-section">
 
-<label class="section-title">Quick resize</label>
+<div class="section-title">Quick resize</div>
 
 <div class="preset-buttons">
 <button class="preset" data-size="1200">Website Image (1200 px)</button>
@@ -192,7 +192,7 @@ Maintain aspect ratio
 
 <div class="tool-section">
 
-<label class="section-title">Output Format</label>
+<div class="section-title">Output Format</div>
 
 <div class="format-buttons">
 <button class="convert-btn active" data-format="image/jpeg">JPG</button>
@@ -206,7 +206,7 @@ Maintain aspect ratio
 <div class="tool-section">
 
 <div class="quality-header">
-<label class="section-title">Compression Quality</label>
+<label class="section-title" for="qualitySlider">Compression Quality</label>
 <span id="qualityValue">80%</span>
 </div>
 

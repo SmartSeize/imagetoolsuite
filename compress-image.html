@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -375,7 +375,7 @@ color: #3a3835;
     <strong>Drop image here to start</strong>
     <p>or</p>
     <button class="compress-cta" onclick="document.getElementById('compressFileInput').click()">Select Image</button>
-    <input type="file" id="compressFileInput" accept="image/*" hidden>
+    <input type="file" id="compressFileInput" accept="image/*" aria-label="Upload image to compress" hidden>
     <p style="margin-top:12px; font-size:12px; color:#aaa;">Works best with JPG, PNG and WebP images – processed locally in your browser.</p>
   </div>
 
@@ -387,7 +387,7 @@ color: #3a3835;
     </div>
 
     <div class="quality-wrap">
-      <label>Compression Quality</label>
+      <label for="compressQuality">Compression Quality</label>
       <div class="quality-row">
         <input type="range" id="compressQuality" min="10" max="100" value="80" step="5">
         <span class="quality-badge" id="compressQualityVal">80%</span>
@@ -408,7 +408,7 @@ color: #3a3835;
     </div>
 
     <button class="compress-cta" id="compressDownloadBtn">⬇ Download Compressed Image</button>
-    <div id="compressResult" style="margin-top:12px; font-size:14px;"></div>
+    <div id="compressResult" role="status" aria-live="polite" style="margin-top:12px; font-size:14px;"></div>
 
   </div>
 

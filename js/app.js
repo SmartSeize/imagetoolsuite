@@ -1,4 +1,4 @@
-let reportData={}
+﻿let reportData={}
 let selectedFormat="image/jpeg"
 let currentFileSize=0
 
@@ -570,7 +570,7 @@ let bestUseHtml="<h3>Best Use</h3>"
 bestUse.forEach(i=>bestUseHtml+=`<div class="analysis-row">${i}</div>`)
 
 preview.innerHTML=`
-<img src="${img.src}" id="previewImage">
+<img src="${img.src}" id="previewImage" alt="Preview of the image being analyzed">
 <div class="image-info">
 <div><b>Resolution</b> ${w} × ${h} px</div>
 <div><b>Megapixels</b> ${megapixelsDisplay} MP</div>
@@ -612,12 +612,12 @@ ratioCalcBox.innerHTML=`
 </div>
 <div class="ratio-inputs">
 <div class="ratio-calc-row">
-<label>Width</label>
+<label for="ratioInputW">Width</label>
 <input type="number" id="ratioInputW" value="${w}" min="1">
 <span class="unit">px</span>
 </div>
 <div class="ratio-calc-row">
-<label>Height</label>
+<label for="ratioInputH">Height</label>
 <input type="number" id="ratioInputH" value="${h}" min="1">
 <span class="unit">px</span>
 </div>
