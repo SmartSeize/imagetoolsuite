@@ -123,7 +123,7 @@ color:#1f7a3e;
 
 .badge-medium{
 background:#fff4e5;
-color:#b26a00;
+color:#8a5200;
 }
 
 .badge-bad{
@@ -279,7 +279,7 @@ padding:0 28px;
 .drop-hint{
 text-align:center;
 font-size:13px;
-color:#777;
+color:#555;
 margin-top:10px;
 }
 
@@ -949,7 +949,7 @@ padding: 18px;
 display: block;
 font-size: 1.8rem;
 font-weight: 700;
-color: #4caf50;
+color: #2e7d32;
 line-height: 1;
 margin-bottom: 6px;
 }
@@ -1079,7 +1079,7 @@ line-height: 1.7;
   display: inline-block;
   margin: 8px auto 0;
   padding: 10px 24px;
-  background: #4caf50;
+  background: #2e7d32;
   color: white;
   border: none;
   border-radius: 8px;
@@ -1165,7 +1165,7 @@ font-size: 14px;
 }
 
 .tool-links ul li a {
-color: #4caf50;
+color: #2e7d32;
 font-weight: 600;
 text-decoration: none;
 }
@@ -1300,5 +1300,5 @@ margin-bottom: 14px;
 .hub-card-cta {
 font-size: 13px;
 font-weight: 600;
-color: #4caf50;
+color: #2e7d32;
 }
