@@ -220,7 +220,7 @@ color:#666;
 
 .score-info{
 font-size:13px;
-color:#777;
+color:#555;
 margin-top:6px;
 }
 
@@ -755,7 +755,7 @@ letter-spacing:-0.5px;
 
 .ratio-sub{
 font-size:11px;
-color:#888;
+color:#555;
 margin-top:2px;
 }
 
@@ -962,7 +962,7 @@ margin-bottom: 4px;
 
 .seo-step p {
 font-size: 13px;
-color: #6b6860;
+color: #4a4845;
 margin: 0;
 }
 
@@ -1028,7 +1028,7 @@ color: #3a3835;
 
 .seo-hint {
 font-size: 13px;
-color: #888;
+color: #555;
 margin-top: 10px;
 }
 
@@ -1167,7 +1167,7 @@ font-size: 14px;
 .tool-links ul li a {
 color: #2e7d32;
 font-weight: 600;
-text-decoration: none;
+text-decoration: underline;
 }
 
 .tool-links ul li a:hover {
@@ -1211,7 +1211,7 @@ flex-wrap: wrap;
 font-size: 13px;
 font-weight: 500;
 color: #555;
-text-decoration: none;
+text-decoration: underline;
 padding: 5px 10px;
 border-radius: 6px;
 transition: background 0.15s, color 0.15s;
@@ -1291,7 +1291,7 @@ margin-bottom: 8px;
 
 .hub-card-desc {
 font-size: 13px;
-color: #6b6860;
+color: #4a4845;
 line-height: 1.6;
 flex: 1;
 margin-bottom: 14px;
