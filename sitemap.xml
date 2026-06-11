@@ -24,13 +24,32 @@
   <url>
     <loc>https://imagetoolsuite.com/social-media-image-size</loc>
   </url>
-
   <url>
-    <loc>https://imagetoolsuite.com/legal-notice</loc>
+    <loc>https://imagetoolsuite.com/image-resolution-checker</loc>
   </url>
 
   <url>
-    <loc>https://imagetoolsuite.com/privacy-policy</loc>
+    <loc>https://imagetoolsuite.com/image-quality-checker</loc>
+  </url>
+
+  <url>
+    <loc>https://imagetoolsuite.com/image-dpi-checker</loc>
+  </url>
+
+  <url>
+    <loc>https://imagetoolsuite.com/compress-image-to-100kb</loc>
+  </url>
+
+  <url>
+    <loc>https://imagetoolsuite.com/compress-image-to-50kb</loc>
+  </url>
+
+  <url>
+    <loc>https://imagetoolsuite.com/instagram-image-size</loc>
+  </url>
+
+  <url>
+    <loc>https://imagetoolsuite.com/facebook-image-size</loc>
   </url>
 
 </urlset>
